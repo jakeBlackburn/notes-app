@@ -1,0 +1,128 @@
+[
+{"title":"javascript","version":"v1","overview":"Javascript is an object oriented programming language originally designed for making interactive web pages. This page will cover the basics of Javascript and how it relates to the web. I'm not going into a programming tutorial here, I'll assume basic understanding of programming languages. I’ll cover the main concepts and details that I think are most important to get started in Javascript, although there is much to learn beyond this.",
+    "text":[
+        {"id":{"$oid":"62ec27cba613767e3d2ff9b1"},"title":"Basics of OOP",
+            "text":[
+                {"id":{"$oid":"62f943c772e9954af1746500"},"content":"Object oriented programming, or OOP, is a programming paradigm that seeks to wrap related data and functionality into \"Objects\", an ambiguous type which can be shaped into whatever structure a programmer wants."}
+            ]
+        },
+
+        {"id":{"$oid":"62ec27d8a613767e3d2ff9b2"},"title":"Declaring Variables",
+            "text":[
+                {"id":{"$oid":"62f9442a72e9954af1746501"},"content":"To declare variables in Javascript, use the const, let, or var keywords. There isn’t much difference between the three and it rarely matters which you use, but it is important to understand that const stands for ‘constant’, meaning a value that does not change. If you initialize a variable with const, you will not be able to reassign its value. "},
+                {"id":{"$oid":"62f9570972e9954af1746520"},"content":"Javascript has no type system so you cannot do strict type checking. This makes the language flexible but can also cause problems. Oftentimes data with the wrong type will sneak into your code and break the program. Make sure your types are consistent when programming in Javascript (or use typescript)."}
+            ]
+        },
+
+        {"id":{"$oid":"62f9573d72e9954af1746521"},"title":"Assignment and Comparison in Javascript",
+            "text":[
+                {"id":{"$oid":"62f9576972e9954af1746522"},"content":"Javascript uses = for assignment, and ==/=== for checking equality. == is a less strict check for equality where two values can be different types and still be the same, for instance a number as a string and a pure number. === checks for strict equality, meaning they have to have the same type and value. >, <, >=, and <= all work as  you’d expect. && is used for ‘and’, || is used for ‘or’."}
+            ]
+        },
+
+        {"id":{"$oid":"62f7dcf45526d50ded6af266"},"title":"Declaring Functions",
+            "text":[
+                {"id":{"$oid":"62f947b272e9954af1746504"},"content":"Functions in Javascript can be declared multiple ways:","order":{"$numberInt":"1"}},
+                {"id":{"$oid":"62f947e972e9954af1746505"},"content":"Functions in javascript use the ‘return’ keyword to return something or simply to stop the function if nothing is returned.","order":{"$numberInt":"3"}},
+                {"id":{"$oid":"62f9480872e9954af1746506"},"content":"In the first case the variable is returned, in the second nothing gets returned and the function simply stops, and in the third example the function returns an object containing two variables ","order":{"$numberInt":"5"}},
+                {"id":{"$oid":"62f9481c72e9954af1746507"},"content":"To get at those variables, first create an instance of the object using the function, then use it like any other object","order":{"$numberInt":"6"}}
+            ],
+            "code":[
+                {"id":{"$oid":"62f9418272e9954af17464ff"},"caption":"lang: javascript","content":"\nconst getTitle = function(arg1, arg2) {\n\t//function body\n}\n\nconst getTitle(arg1, arg2) {\n\t//function body\n}\n\nconst getTitle = (arg1, arg2) => //function body\n\nconst getTitle = (arg1, arg2) => {\n\t//function body\n}","order":{"$numberInt":"2"}},
+                {"id":{"$oid":"62f94d5572e9954af1746517"},"caption":"lang: javascript","content":"\nconst getTitle() {\n\tconst variable = ‘example string’\n\t//do something\n\treturn variable\n}\n\nconst getTitle() {\n\t//do something\n\treturn\n}\n\nconst getTitle() {\n\tconst variable1 = ‘example string 1’\n\tconst variable2 = ‘example string 2’\n\t//do something\n\treturn {\n            var1: variable1, \n            var2: variable2\t\n        } \n}","order":{"$numberInt":"4"}},
+                {"id":{"$oid":"62f94d9072e9954af1746518"},"caption":"lang: javascript","content":"\nconst instance = getTitle();\ninstance.var1;\ninstance.var2;","order":{"$numberInt":"7"}}
+            ]
+        },
+                
+        {"id":{"$oid":"62f7de255526d50ded6af267"},"title":"Creating Objects",
+            "text":[
+                {"id":{"$oid":"62f94bd772e9954af1746512"},"content":"An object is defined within curly braces: { }. Data within the object is formatted with key: value, structure, for example:","order":{"$numberInt":"1"}},
+                {"id":{"$oid":"62f94bea72e9954af1746513"},"content":"The data within the object can then be accessed with dot notation:","order":{"$numberInt":"3"}},
+                {"id":{"$oid":"62f94c0872e9954af1746514"},"content":"An object can store data as well as methods: ","order":{"$numberInt":"5"}},
+                {"id":{"$oid":"62f94c3272e9954af1746515"},"content":"It can even store another object:","order":{"$numberInt":"7"}},
+                {"id":{"$oid":"62f94c4872e9954af1746516"},"content":"The nested data can then be accessed from Object.nested_object.data","order":{"$numberInt":"9"}}
+            ],
+            "code":[
+                {"id":{"$oid":"62f94e5c72e9954af1746519"},"caption":"lang: javascript","content":"\nconst Object = {\n\ttitle: ‘javascript’,\n\tversion: 1,\n}","order":{"$numberInt":"2"}},
+                {"id":{"$oid":"62f95d5672e9954af1746523"},"caption":"lang: javascript","content":"\nObject.title\nObject.version","order":{"$numberInt":"4"}},
+                {"id":{"$oid":"62f94e8672e9954af174651a"},"caption":"lang: javascript","content":"\nconst Object = { \n    function_name: function() {\n        //function body \n    }\n}","order":{"$numberInt":"6"}},
+                {"id":{"$oid":"62f94eb572e9954af174651b"},"caption":"lang: javascript","content":"\nconst Object = {\n       nested_object: {\n\t   data: ‘string’\n       }\n}","order":{"$numberInt":"8"}}
+            ]
+        },
+
+        {"id":{"$oid":"62f7f4285526d50ded6af268"},"title":"Javascript for Web Development",
+            "text":[
+                {"id":{"$oid":"62f94adf72e9954af1746508"},"content":"In the context of web development, javascript can be used in a website by including it in the HTML. This can be done directly in a <script> tag, or you can import an external .js script with the <link> tag."},
+                {"id":{"$oid":"62f94af272e9954af1746509"},"content":"When running in a browser, Javascript includes an extra globally available object: ‘window’. The window object contains pretty much all relevant data regarding the browser. In my experience the most common use case for the window object is to get the width and/or height of the viewport with window.innerHeight, and window.innerWidth. "},
+                {"id":{"$oid":"62f94b0f72e9954af174650a"},"content":" The document object is a property of the window object and is the primary means of interacting with the HTML in a vanilla JS application. "},
+                {"id":{"$oid":"62f94b2272e9954af174650b"},"content":"One important thing to get a handle on is creating references for your HTML elements. The most common way to do this is with:"},
+                {"id":{"$oid":"62f94b4272e9954af174650c"},"content":"You can use it like this to change things about the referenced element: ","order":{"$numberInt":"2"}},
+                {"id":{"$oid":"62f94b6f72e9954af174650e"},"content":"The first linke changes the contents of the element to ‘new content’, the next line adds a class of 'different-class' to the element, and the third line changes the styles on the element to include a red background.","order":{"$numberInt":"4"}},
+                {"id":{"$oid":"62f94bac72e9954af1746511"},"content":"There are many other things you can do with the document object to make a page interactive, however, it is not the best way to make complex applications. Often people will use a library or framework to essentially hide these ‘dom manipulations’ (dom just stands for document object model and is accessed/manipulated with the document object) behind another layer of abstraction. Some of the more popular ways to do this are React, Vue.js, and Angular, all of which have their own notes. ","order":{"$numberInt":"5"}}
+            ],
+            "code":[
+                {"id":{"$oid":"62f94f8e72e9954af174651d"},"caption":"lang: javascript","content":"const element = document.getElementById(‘ID’)","order":{"$numberInt":"1"}},
+                {"id":{"$oid":"62f94fb672e9954af174651e"},"caption":"lang: javascript","content":"\nelement.InnerHTML = 'new content'\nelement.class = 'different-class'\nelement.style.background-color = 'red'","order":{"$numberInt":"3"}}
+            ]
+        }
+    ]
+},
+
+{"title":"web-development","version":"v1","overview":"Web development is the practice of programming a web page. This could be as simple as creating a static page with some text and styles, or as complex as serving a dynamic site and content to millions of users simultaneously. Web development in general involves the traditional web technologies: HTML, CSS, and Javascript. HTML defines the content to appear on the page, CSS makes things look pretty, and Javascript makes the page interactive. I won't go into detail about how to make a web page here, just explain the basics of the internet and a roadmap to learning web development. ",
+    "text":[
+        {"id":{"$oid":"62fa98df78f57ad879c5a22f"},"title":"Basics of the Web",
+            "text":[
+                {"id":{"$oid":"62fa992778f57ad879c5a230"},"content":"under construction. . . "}
+            ]
+        }
+    ]
+},
+
+{"title":"about-notes","version":"v1","overview":"Here you can find all my notes on everything I’ve learned in my path to becoming a self-taught web developer. It is currently 'under construction' so it may be sparse at the moment but I'm writing more notes every day. ",
+    "text":[
+        {"id":{"$oid":"62ec27cba613767e3d2ff9b1"},"title":"My Note Taking Philosophy",
+            "text":[
+                {"id":{"$oid":"62f944b572e9954af1746502"},"content":"I don’t like to take notes as I’m learning, instead I learn and then write my notes. This tests my ability to recall the information, highlights the gaps in my knowledge, and serves as review time. Often I find writing notes this way means I am less likely to re-read my notes, since It allows time for the ideas to really sink in. I think it’s dangerous to rely on notes as a form of proxy-memory. It's better to use your note taking as an opportunity to truly internalize what you learn so you won’t have to review as often."}
+            ]
+        },
+
+        {"id":{"$oid":"62ec27d8a613767e3d2ff9b2"},"title":"Feynman Technique",
+            "text":[
+                {"id":{"$oid":"62f944e172e9954af1746503"},"content":"I like to use the Feynman technique, which basically means rather than creating a “cheat sheet”, I try to detail everything I know from scratch, as if I were explaining it to someone who has no prior knowledge. This strategy not only forces me to truly understand the ideas and go step by step, but also tests my ability to communicate those ideas, making it the ideal note taking strategy for people who work on a team. "}
+            ]
+        }
+    ]
+},
+
+{"title":"html","version":"v1","overview":"HTML, or hyper-text markup language, is a formatting convention used to display content on a webpage. It is not a programming language, but it has syntax and conventions just like one. A developer will use HTML to define what content will appear on the page.\nYour browser takes the HTML and constructs the DOM, or the “document object model” which is essentially what gets displayed on the screen when you visit a web page. ",
+    "text":[
+        {"id":{"$oid":"62fa98df78f57ad879c5a22f"},"title":"HTML tags",
+            "text":[
+                {"id":{"$oid":"62fa992778f57ad879c5a230"},"content":"under construction. . . "}
+            ]
+        }
+    ]
+},
+
+{"title":"css","version":"v1","overview":"CSS stands for cascading style sheet. CSS is a format for defining the style of HTML displayed in your browser.",
+    "text":[
+        {"id":{"$oid":"62fa98df78f57ad879c5a22f"},"title":"CSS Properties",
+            "text":[
+                {"id":{"$oid":"62fa992778f57ad879c5a230"},"content":"under construction. . . "}
+            ]
+        }
+    ]
+},
+
+{"title":"frontend","version":"v1","overview":"under construction. . ."},
+
+{"title":"backend","version":"v1","overview":"under construction. . ."},
+
+{"title":"react","version":"v1","overview":"under construction. . ."},
+
+{"title":"angular","version":"v1","overview":"under construction. . ."},
+
+{"title":"vue.js","version":"v1","overview":"under construction. . ."},
+
+{"title":"express","version":"v1","overview":"under construction. . ."}
+]
