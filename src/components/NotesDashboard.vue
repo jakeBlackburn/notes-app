@@ -30,7 +30,7 @@ export default {
         async getNote(title) {
             this.isLoading = true
             try {
-                const res = await axios.get(`http://localhost:3000/api/v1/notes/${title}`)
+                const res = await axios.get(`https://jakes-notes.herokuapp.com/api/v1/notes/${title}`)
                 this.note = res.data.note
                 this.isLoading = false
             } catch (err) {
