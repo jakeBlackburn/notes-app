@@ -1,6 +1,6 @@
 <template>
     <div class="notes-dashboard">
-        <!-- <img class="toggle-arrow" :src="toggled ? require('../assets/right-arrow.png') : require('../assets/left-arrow.png')" @click="toggleNav()"> -->
+        <img class="toggle-arrow" :src="toggled ? require('../assets/right-arrow.png') : require('../assets/left-arrow.png')" @click="toggleNav()">
         <div class="notes-nav" :style="{ display: toggled ? 'none' : 'block', position: toggled ? 'absolute' : 'static' }">
             <h3 class="note" v-for="title in notes" :key="title" @click="this.getNote(title.toLowerCase())">{{title.replace(/-/g, " ")}}</h3>
         </div>
@@ -52,6 +52,8 @@ export default {
     background-color: white;
     display: flex;
     border-bottom: 1px solid darkorchid;
+    margin-top: 80px;
+    border-top: 1px solid black;
 }
 
 .notes-nav {

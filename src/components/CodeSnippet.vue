@@ -33,6 +33,7 @@ export default {
 }
 
 pre, code {
+    color: rgb(255, 215, 215);
     font-family: monospace, monospace;
     margin: 0 0 0 20px;
     padding: 0;
