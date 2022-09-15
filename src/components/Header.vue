@@ -1,6 +1,6 @@
 <template>
 <div class="header-container">
-    <h1>Notes App</h1>
+    <h1>Jake's Notes</h1>
 </div>
 
 </template>
