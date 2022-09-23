@@ -1,104 +1,262 @@
 [
-{"title":"javascript","version":"v1","overview":"Javascript is an object oriented programming language originally designed for making interactive web pages. This page will cover the basics of Javascript and how it relates to the web. I'm not going into a programming tutorial here, I'll assume basic understanding of programming languages. I’ll cover the main concepts and details that I think are most important to get started in Javascript, although there is much to learn beyond this.",
+{"title":"javascript","version":"v1","overview":"Javascript is an object oriented programming language originally designed for making interactive web pages. This page will cover the basics of Javascript and how it relates to the web. I'm not going into a programming tutorial here, I'll assume basic understanding of programming languages. I'll cover the main concepts and details that I think are most important to get started in Javascript, although there is much to learn beyond this.",
     "text":[
-        {"id":{"$oid":"62ec27cba613767e3d2ff9b1"},"title":"Basics of OOP",
-            "text":[
-                {"id":{"$oid":"62f943c772e9954af1746500"},"content":"Object oriented programming, or OOP, is a programming paradigm that seeks to wrap related data and functionality into \"Objects\", an ambiguous type which can be shaped into whatever structure a programmer wants."}
-            ]
-        },
+       
 
-        {"id":{"$oid":"62ec27d8a613767e3d2ff9b2"},"title":"Declaring Variables",
+        {"title":"Declaring Variables",
             "text":[
-                {"id":{"$oid":"62f9442a72e9954af1746501"},"content":"To declare variables in Javascript, use the const, let, or var keywords. There isn’t much difference between the three and it rarely matters which you use, but it is important to understand that const stands for ‘constant’, meaning a value that does not change. If you initialize a variable with const, you will not be able to reassign its value. "},
-                {"id":{"$oid":"62f9570972e9954af1746520"},"content":"Javascript has no type system so you cannot do strict type checking. This makes the language flexible but can also cause problems. Oftentimes data with the wrong type will sneak into your code and break the program. Make sure your types are consistent when programming in Javascript (or use typescript)."}
-            ]
-        },
-
-        {"id":{"$oid":"62f9573d72e9954af1746521"},"title":"Assignment and Comparison in Javascript",
-            "text":[
-                {"id":{"$oid":"62f9576972e9954af1746522"},"content":"Javascript uses = for assignment, and ==/=== for checking equality. == is a less strict check for equality where two values can be different types and still be the same, for instance a number as a string and a pure number. === checks for strict equality, meaning they have to have the same type and value. >, <, >=, and <= all work as  you’d expect. && is used for ‘and’, || is used for ‘or’."}
-            ]
-        },
-
-        {"id":{"$oid":"62f7dcf45526d50ded6af266"},"title":"Declaring Functions",
-            "text":[
-                {"id":{"$oid":"62f947b272e9954af1746504"},"content":"Functions in Javascript can be declared multiple ways:","order":{"$numberInt":"1"}},
-                {"id":{"$oid":"62f947e972e9954af1746505"},"content":"Functions in javascript use the ‘return’ keyword to return something or simply to stop the function if nothing is returned.","order":{"$numberInt":"3"}},
-                {"id":{"$oid":"62f9480872e9954af1746506"},"content":"In the first case the variable is returned, in the second nothing gets returned and the function simply stops, and in the third example the function returns an object containing two variables ","order":{"$numberInt":"5"}},
-                {"id":{"$oid":"62f9481c72e9954af1746507"},"content":"To get at those variables, first create an instance of the object using the function, then use it like any other object","order":{"$numberInt":"6"}}
+                {"content":"To declare variables in Javascript, use the const, let, or var keywords. There isn't much difference between the three and it rarely matters which you use, but it is important to understand that const stands for 'constant', meaning a value that does not change. If you initialize a variable with const, you will not be able to reassign its value. "}
             ],
             "code":[
-                {"id":{"$oid":"62f9418272e9954af17464ff"},"caption":"lang: javascript","content":"\nconst getTitle = function(arg1, arg2) {\n\t//function body\n}\n\nconst getTitle(arg1, arg2) {\n\t//function body\n}\n\nconst getTitle = (arg1, arg2) => //function body\n\nconst getTitle = (arg1, arg2) => {\n\t//function body\n}","order":{"$numberInt":"2"}},
-                {"id":{"$oid":"62f94d5572e9954af1746517"},"caption":"lang: javascript","content":"\nconst getTitle() {\n\tconst variable = ‘example string’\n\t//do something\n\treturn variable\n}\n\nconst getTitle() {\n\t//do something\n\treturn\n}\n\nconst getTitle() {\n\tconst variable1 = ‘example string 1’\n\tconst variable2 = ‘example string 2’\n\t//do something\n\treturn {\n            var1: variable1, \n            var2: variable2\t\n        } \n}","order":{"$numberInt":"4"}},
-                {"id":{"$oid":"62f94d9072e9954af1746518"},"caption":"lang: javascript","content":"\nconst instance = getTitle();\ninstance.var1;\ninstance.var2;","order":{"$numberInt":"7"}}
+                {"caption":"lang: javascript","content":"\nlet string = 'hello world' \nvar bool = true\nconst number = 100\n\nstring = 'new string' // no error, reassigned 'string'\nbool = false // no error, reassigned 'bool'\nnumber = 200 // throws error - can't reassign constant variable"}
+            ]
+        },
+
+        {"title": "Types",
+            "text":[
+                {"content":"Javascript has no type system so you cannot do strict type checking. This makes the language flexible but can also cause problems. Oftentimes data with the wrong type will sneak into your code and break the program. Make sure your types are consistent when programming in Javascript (or use typescript).","order":1},
+                {"content":"you can check the type of a variable with the 'typeof' keyword. the following code example illustrates the use of this keyword with the common data types in javascript. (console.log(content) is simply a method that prints the contents to the console)","order":2},
+                {"content":"The 'typeof' expression will always resolve to a string:","order":4},
+                {"content":"This is a suboptimal way to ensure type consistency compared to statically typed languages like typescript, but it can be useful in isolated cases.","order":6}
+
+            ],
+            "code":[
+                {"caption":"lang: javascript","content":"\nconsole.log(typeof 100) //returns 'number'\nconsole.log(typeof '100') //returns 'string'\nconsole.log(typeof {num: 100}) //returns 'object'\nconsole.log(typeof true) //returns 'boolean'\nconsole.log(typeof undefined) //returns 'undefined'\nconsole.log(typeof null) //returns 'object'","order":3},
+                {"caption":"lang: javascript","content":"\nconsole.log(typeof typeof 100) // returns 'string'.","order":5}
+            ]
+
+        },
+
+        {"title":"Comparison",
+            "text":[
+                {"content":"'==' and '===' are used for checking equality. '==' is a less strict check for equality where two values can be different types and still be the same, for instance a number as a string and a pure number. '===' checks for strict equality, meaning they have to have the same type and value. '>', '<', '>=', and '<=' all work as you'd expect. '&&' is used for 'and', || is used for 'or'. Here are some examples:"}
+            ],
+            "code":[
+                {"caption":"lang: javascript","content":"\nconsole.log(100 == '100') // logs 'true'\nconsole.log(100 === '100') // logs 'false'\nconsole.log(100 > 10) // logs 'true'\nconsole.log(100 <= 100) // logs 'true'\nconsole.log(true && false) // logs 'false'\nconsole.log(true || false) // logs 'true'"}
+            ]
+        },
+
+        {"title":"Conditional Logic",
+            "text":[
+                {"content":"Here's some examples of the classic 'if' and 'if-else' statements in javascript:"},
+                {"content":"Notice the condition is housed by parentheses, while the logic to be executed is in curly braces. This logic will only execute if the condition within the parentheses resolves to true, otherwise the code block following 'else' will execute.","order":1},
+                {"content":"The condition does not necessarily need to be a boolean value. If passed another value, it will resolve to true so long as the type is not null or undefined:","order":3},
+                {"content":"There is also what is called a ternary operator in javascript, another way to do conditional logic. This is an expression which resolves to one of two values depending on the condition, and it looks like this:","order":5},
+                {"content":"The code before '?' is the condition, (which again, doesn't have to be a boolean) and the two strings afterwards, separated by the colon, are the values which will be supplied depending on the condition. The first string will be returned if the condition is truthy, else the second string will be returned.","order":7}
+            ],
+            "code":[
+                {"caption":"lang: javascript","content":"\nif (true) {\n\tconsole.log('true!')\n} // logs 'true!'\n\nif (false) {\n\tconsole.log('true!')\n} else {\n\tconsole.log('false!')\n} // logs 'false!'","order":2},
+                {"caption":"lang: javascript","content":"\nvar i = 100\n\nif (i) {\n\tconsole.log('variable detected')\n} else {\n\tconsole.log('no variable')\n} // logs 'variable detected'","order":4},
+                {"caption":"lang: javascript","content":"\nconsole.log(true ? 'true' : 'false')  // logs true\n\nconsole.log(false ? 'true' : 'false') // logs false","order":6}
+            ]
+
+        },
+
+        {"title":"Loops",
+            "text":[
+                {"content":"Loops in Javascript are most commonly denoted with the 'for' keyword. The generic version looks like this:","order":1},
+                {"content":"'Value' is simply the initial value set to the variable i. 'Condition' is an expression that is checked each time and will terminate the loop if it resolves truthy. 'Iteration' is the behavior executed at the end of each iteration, commonly used to increment a count. Here's a real example:","order":3},
+                {"content":"This loop will print all numbers 0-9. Essentially, when the loop initiates, i is set to 0, then the middle condition, i < 10, is checked. as long as the condition is truthy, the loop will continue. After the condition is checked, the inner functionality of the loop is executed, and finally, i++ is executed. Then the entire process is repeated, ignoring 'let i = 0', until the condition resolves falsy.","order":5},
+                {"content":"Alternatively, one can loop with 'do-while' syntax, like so:","order":6},
+                {"content":"This is a bit different from the for loop in that one can choose to increment the j variable before the value is logged to the console, meaning it will log the values 1-10 instead of 0-9.","order":8}
+            ],
+            "code":[
+                {"caption":"lang: javascript","content":"\nfor (let i = value, condition, iteration) {\n\t//do something\n}","order":2},
+                {"caption":"lang: javascript","content":"\nfor (let i = 0; i < 10; i++) {\n\tconsole.log(i)\n} // logs numbers 0-9","order":4},
+                {"caption":"lang: javascript","content":"\nvar j = 0\ndo {\n\tj++;\n\tconsole.log(j)\n\t} while (j < 10) // logs all numbers 1-10","order":7}
+            ]
+        },
+
+        {"title":"Declaring Functions",
+            "text":[
+                {"content":"Functions in Javascript can be declared multiple ways:","order":1},
+                {"content":"Functions in javascript use the 'return' keyword to return something or simply to stop the function if nothing is returned.","order":3},
+                {"content":"In the first function the variable is returned, in the second nothing gets returned and the function simply stops, and in the third example the function returns an object containing two variables ","order":5}            ],
+            "code":[
+                {"caption":"lang: javascript","content":"\nconst function1 = function(arg1, arg2) {\n\t//function body\n\treturn 'function 1'\n}\nconst function2 = (arg1, arg2) => {\n\t//function body\n\treturn 'function 2'\n}\n//uses implicit return, no 'return' keyword needed\nconst function3 = (arg1, arg2) => 'function 3'\nfunction function4(arg1, arg2) {\n\t//function body\n\treturn 'function 4'\n}","order":2},
+                {"caption":"lang: javascript","content":"\nconst function1() {\n\tconst variable = 'example string'\n\t//do something\n\treturn variable\n}\n\nconst function2() {\n\t//do something\n\treturn\n}\n\nconst function3() {\n\tconst variable1 = 'example string 1'\n\tconst variable2 = 'example string 2'\n\t//do something\n\treturn {\n            var1: variable1, \n            var2: variable2\t\n        } \n}","order":4}
             ]
         },
                 
-        {"id":{"$oid":"62f7de255526d50ded6af267"},"title":"Creating Objects",
+        {"title":"Creating Objects",
             "text":[
-                {"id":{"$oid":"62f94bd772e9954af1746512"},"content":"An object is defined within curly braces: { }. Data within the object is formatted with key: value, structure, for example:","order":{"$numberInt":"1"}},
-                {"id":{"$oid":"62f94bea72e9954af1746513"},"content":"The data within the object can then be accessed with dot notation:","order":{"$numberInt":"3"}},
-                {"id":{"$oid":"62f94c0872e9954af1746514"},"content":"An object can store data as well as methods: ","order":{"$numberInt":"5"}},
-                {"id":{"$oid":"62f94c3272e9954af1746515"},"content":"It can even store another object:","order":{"$numberInt":"7"}},
-                {"id":{"$oid":"62f94c4872e9954af1746516"},"content":"The nested data can then be accessed from Object.nested_object.data","order":{"$numberInt":"9"}}
+                {"content":"Object oriented programming, or OOP, is a programming paradigm that seeks to wrap related data and functionality into \"Objects\", an ambiguous type which can be shaped into whatever structure a programmer wants.","order":1},
+                {"content":"An object is defined within curly braces: { }. Data within the object is formatted with key: value, structure, for example:","order":2},
+                {"content":"The data within the object can then be accessed with dot notation:","order":4},
+                {"content":"An object can store data as well as methods: ","order":6},
+                {"content":"It can even store another object:","order":8},
+                {"content":"The nested data can then be accessed from Object.nested_object.data","order":10}
             ],
             "code":[
-                {"id":{"$oid":"62f94e5c72e9954af1746519"},"caption":"lang: javascript","content":"\nconst Object = {\n\ttitle: ‘javascript’,\n\tversion: 1,\n}","order":{"$numberInt":"2"}},
-                {"id":{"$oid":"62f95d5672e9954af1746523"},"caption":"lang: javascript","content":"\nObject.title\nObject.version","order":{"$numberInt":"4"}},
-                {"id":{"$oid":"62f94e8672e9954af174651a"},"caption":"lang: javascript","content":"\nconst Object = { \n    function_name: function() {\n        //function body \n    }\n}","order":{"$numberInt":"6"}},
-                {"id":{"$oid":"62f94eb572e9954af174651b"},"caption":"lang: javascript","content":"\nconst Object = {\n       nested_object: {\n\t   data: ‘string’\n       }\n}","order":{"$numberInt":"8"}}
+                {"caption":"lang: javascript","content":"\nconst Object = {\n\ttitle: 'javascript',\n\tversion: 1,\n}","order":3},
+                {"caption":"lang: javascript","content":"\nObject.title\nObject.version","order":5},
+                {"caption":"lang: javascript","content":"\nconst Object = { \n    function_name: function() {\n        //function body \n    }\n}","order":7},
+                {"caption":"lang: javascript","content":"\nconst Object = {\n       nested_object: {\n\t   data: 'string'\n       }\n}","order":9}
             ]
         },
 
-        {"id":{"$oid":"62f7f4285526d50ded6af268"},"title":"Javascript for Web Development",
+        {"title":"Javascript for Web Development",
             "text":[
-                {"id":{"$oid":"62f94adf72e9954af1746508"},"content":"In the context of web development, javascript can be used in a website by including it in the HTML. This can be done directly in a <script> tag, or you can import an external .js script with the <link> tag."},
-                {"id":{"$oid":"62f94af272e9954af1746509"},"content":"When running in a browser, Javascript includes an extra globally available object: ‘window’. The window object contains pretty much all relevant data regarding the browser. In my experience the most common use case for the window object is to get the width and/or height of the viewport with window.innerHeight, and window.innerWidth. "},
-                {"id":{"$oid":"62f94b0f72e9954af174650a"},"content":" The document object is a property of the window object and is the primary means of interacting with the HTML in a vanilla JS application. "},
-                {"id":{"$oid":"62f94b2272e9954af174650b"},"content":"One important thing to get a handle on is creating references for your HTML elements. The most common way to do this is with:"},
-                {"id":{"$oid":"62f94b4272e9954af174650c"},"content":"You can use it like this to change things about the referenced element: ","order":{"$numberInt":"2"}},
-                {"id":{"$oid":"62f94b6f72e9954af174650e"},"content":"The first linke changes the contents of the element to ‘new content’, the next line adds a class of 'different-class' to the element, and the third line changes the styles on the element to include a red background.","order":{"$numberInt":"4"}},
-                {"id":{"$oid":"62f94bac72e9954af1746511"},"content":"There are many other things you can do with the document object to make a page interactive, however, it is not the best way to make complex applications. Often people will use a library or framework to essentially hide these ‘dom manipulations’ (dom just stands for document object model and is accessed/manipulated with the document object) behind another layer of abstraction. Some of the more popular ways to do this are React, Vue.js, and Angular, all of which have their own notes. ","order":{"$numberInt":"5"}}
+                {"content":"In the context of web development, javascript can be used in a website by including it in the HTML. This can be done directly in a <script> tag, within the body or head of the document, or you can import an external .js file with the 'src' attribute and leave the script tag empty.","order":1},
+                {"content":"When running in a browser, Javascript includes an extra globally available object: 'window'. The window object contains pretty much all relevant data regarding the browser. In my experience the most common use case for the window object is to get the width and/or height of the viewport with window.innerHeight, and window.innerWidth.","order":2},
+                {"content":"The document object is a property of the window object and is the primary means of interacting with the HTML in a vanilla JS application. The DOM, or 'document object model' is a tree of javascript objects which define everything about the web page. By manipulating these objects, we can change properties, styles, and content within the page programmatically.","order":3},
+                {"content":"One important thing to get a handle on is creating references for your HTML elements. The most common way to do this is with:","order":4},
+                {"content":"This retrieves all the relevant data on the element with the id of 'ID' and stores it in an object. There are other ways to get the element, but most commonly you will see it done as above, by specifying its ID value. Here are some other ways to get elements:","order":6},
+                {"content":"You can even get a group of elements local to a particular parent element like this:","order":8},
+                {"content":"The above example gets all elements of class 'content' within the element of id 'x'.","order":10},
+                {"content":"Once you've gotten your reference for the element/elements you can then use it like this to change things about the element:","order":11},
+                {"content":"There are many other things you can do with the document object to make a page interactive, however, it is not the best way to make complex applications. Often people will use a library or framework to essentially hide these 'dom manipulations' (dom just stands for document object model and is accessed/manipulated with the document object) behind another layer of abstraction. Some of the more popular ways to do this are React, Vue.js, and Angular.","order":13}
+
             ],
             "code":[
-                {"id":{"$oid":"62f94f8e72e9954af174651d"},"caption":"lang: javascript","content":"const element = document.getElementById(‘ID’)","order":{"$numberInt":"1"}},
-                {"id":{"$oid":"62f94fb672e9954af174651e"},"caption":"lang: javascript","content":"\nelement.InnerHTML = 'new content'\nelement.class = 'different-class'\nelement.style.background-color = 'red'","order":{"$numberInt":"3"}}
-            ]
-        }
-    ]
-},
-
-{"title":"web-development","version":"v1","overview":"Web development is the practice of programming a web page. This could be as simple as creating a static page with some text and styles, or as complex as serving a dynamic site and content to millions of users simultaneously. Web development in general involves the traditional web technologies: HTML, CSS, and Javascript. HTML defines the content to appear on the page, CSS makes things look pretty, and Javascript makes the page interactive. I won't go into detail about how to make a web page here, just explain the basics of the internet and a roadmap to learning web development. ",
-    "text":[
-        {"id":{"$oid":"62fa98df78f57ad879c5a22f"},"title":"Basics of the Web",
-            "text":[
-                {"id":{"$oid":"62fa992778f57ad879c5a230"},"content":"under construction. . . "}
-            ]
-        }
-    ]
-},
-
-{"title":"about-notes","version":"v1","overview":"Here you can find all my notes on everything I’ve learned in my path to becoming a self-taught web developer. It is currently 'under construction' so it may be sparse at the moment but I'm writing more notes every day. ",
-    "text":[
-        {"id":{"$oid":"62ec27cba613767e3d2ff9b1"},"title":"My Note Taking Philosophy",
-            "text":[
-                {"id":{"$oid":"62f944b572e9954af1746502"},"content":"I don’t like to take notes as I’m learning, instead I learn and then write my notes. This tests my ability to recall the information, highlights the gaps in my knowledge, and serves as review time. Often I find writing notes this way means I am less likely to re-read my notes, since It allows time for the ideas to really sink in. I think it’s dangerous to rely on notes as a form of proxy-memory. It's better to use your note taking as an opportunity to truly internalize what you learn so you won’t have to review as often."}
+                {"caption":"lang: javascript","content":"\nconst element = document.getElementById('ID')","order":5},
+                {"caption":"lang: javascript","content":"\nconst class_elements = document.getElementsByClassName('class') //gets all elements of class 'class'\nconst paragraphs = document.getElementsByTagName('p') //gets all <p> elements \nconst elements_by_selector = document.querySelectorAll('p.class') //gets all <p> elements of class 'class'","order":7},
+                {"caption":"lang: javascript","content":"\nconst x = document.getElementById('x')\nconst y = x.getElementsByClassName('content')", "order":9},
+                {"caption":"lang: javascript","content":"\nelement.InnerHTML = 'new content' // changes content of element to 'new content'\nelement.classList.add('new-class')  // adds class 'new-class' to element\nelement.style.color =  'red'; // changes the color of the element to 'red'", "order":12}
             ]
         },
 
-        {"id":{"$oid":"62ec27d8a613767e3d2ff9b2"},"title":"Feynman Technique",
+        {"title":"Getting started in JS",
             "text":[
-                {"id":{"$oid":"62f944e172e9954af1746503"},"content":"I like to use the Feynman technique, which basically means rather than creating a “cheat sheet”, I try to detail everything I know from scratch, as if I were explaining it to someone who has no prior knowledge. This strategy not only forces me to truly understand the ideas and go step by step, but also tests my ability to communicate those ideas, making it the ideal note taking strategy for people who work on a team. "}
+                {"content":"To start writing code with javascript, you will first need to install a runtime environment on your computer. The most popular one is Node, but there are alternatives such as Bun. Simply install one via their website."},
+                {"content":"If you've installed node, open up your favorite code editor and create a file with the .js extension. Type in “console.log(“Hello World!”)”, then open up the terminal and navigate to the file's directory. Run 'node filename.js', and you should see 'Hello World!' logged to the console. Congrats! You just made your first javascript program."}
             ]
         }
     ]
 },
 
-{"title":"html","version":"v1","overview":"HTML, or hyper-text markup language, is a formatting convention used to display content on a webpage. It is not a programming language, but it has syntax and conventions just like one. A developer will use HTML to define what content will appear on the page.\nYour browser takes the HTML and constructs the DOM, or the “document object model” which is essentially what gets displayed on the screen when you visit a web page. ",
+{"title":"web-development","version":"v1","overview":"Web development is the practice of programming a web page. This could be as simple as creating a static page with some text and styles, or as complex as serving a dynamic site and data to millions of users simultaneously. Web development in general involves the traditional web technologies: HTML, CSS, and Javascript. HTML defines the content to appear on the page, CSS makes things look pretty, and Javascript makes the page interactive. I won't go into detail about how to make a web page here, just explain the basics of the internet and some fundamental concepts to assist in learning web development. ",
     "text":[
-        {"id":{"$oid":"62fa98df78f57ad879c5a22f"},"title":"HTML tags",
+        {"title":"Basics of the Web",
             "text":[
-                {"id":{"$oid":"62fa992778f57ad879c5a230"},"content":"under construction. . . "}
+                {"content":"The internet works on a client-server model, where the servers are always listening for requests, and when a client sends a request (most commonly by simply typing a url into a browser) the server will execute some behavior and/or send some data back. When you click on a website in the browser, the browser is sending a GET request to some server endpoint, and that server will respond with the instructions for generating the website. That's an important distinction by the way: the server does not necessarily ‘run’ the website and allow you to interact with it (although there is a similar concept called server-side rendering), it sends you the instructions for your browser to run the website. That's not to say all a server does is send you data, it can also retrieve and store data in its database. When you post a message on a web page like facebook, you are really interacting with the facebook database to add an extra message. When your browser subsequently goes to spin up facebook, it will retrieve all the data it needs from the servers before it displays it on the page.  "},
+                {"content":"There are 2 major sides to web development, frontend and backend. Frontend development means creating the user-facing side of an application. Backend development means configuring the server to react appropriately to incoming requests."}
+            ]
+        },
+        {"title":"Frontend",
+            "text":[
+                {"content":" A frontend developer has to consider the user interface and user experience when designing and implementing the frontend of a website. Most often the frontend consists of some form of HTML, CSS, and Javascript. HTML is used to define the content of the webpage, CSS is used to style the display of the content, and Javascript is used to make the page interactive by indirectly manipulating HTML and CSS. "},
+                {"content":"Because vanilla javascript can get very bulky very fast when coding a complex frontend, much of frontend development utilizes frameworks and libraries like react or angular for simplifying the development process. These helpful modules tend to involve component-based architecture. This essentially means that portions of the page’s content, style, and functionality can be wrapped into one. These components are then used as the building blocks for the page as a whole. These components can be separate or nested; small components can be pieces of big ones. This is especially useful for reducing redundant code because a single component can be reused many times in an application. Once the page is defined in terms of its component tree, there is a ‘build step’ where the application is compiled into a single HTML file, often with nothing in the body but an empty div and a script tag. The script is generated by the framework to render the appropriate content into the empty div. "}
+            ]
+        },
+        {"title":"Backend",
+            "text":[
+                {"content":"There are many ways to create the backend of a website. For instance, It can be done natively in Node.js with its built-in http module. Alternatively, the complexity of building an http server from scratch can be abstracted out with a helper module like Express. PHP is another language used specifically for backend scripting. Even Python, which is not a language built for the web, has packages to build backends with. Similar packages appear in other languages such as ruby or rust. "},
+                {"content":"Much of backend development revolves around configuring a database to connect seamlessly with the website. For example, a messaging app will store the data for every message sent on the app so that it can be accessed by the recipient; the backend developers for this app must ensure that the proper requests always cause the proper changes to the database and that any errors will be handled appropriately. "},
+                {"content":"Databases is a complex topic, and involves many methodologies and technologies. The so-called 'Database paradigms' are concepts that guide the design of databases. Such paradigms include relational databases, document-based databases, REST (REpresentational State Transfer) databases, graph databases, and even mixtures of the types. Some technologies for creating databases include MongoDB, SQL, Redis, Postgres, and many, many more."}
+            ]
+
+        }
+    ]
+},
+
+{"title":"about-notes","version":"v1","overview":"Here you can find all my notes on everything I've learned in my path to becoming a self-taught web developer. It is currently 'under construction' so it may be sparse at the moment but I'm writing more notes every day. ",
+    "text":[
+        {"title":"My Note Taking Philosophy",
+            "text":[
+                {"content":"I don't like to take notes as I'm learning, instead I learn and then write my notes. This tests my ability to recall the information, highlights the gaps in my knowledge, and serves as review time. Often I find writing notes this way means I am less likely to re-read my notes, since It allows time for the ideas to really sink in. I think it's dangerous to rely on notes as a form of proxy-memory. It's better to use your note taking as an opportunity to truly internalize what you learn so you won't have to review as often."}
+            ]
+        },
+
+        {"title":"Feynman Technique",
+            "text":[
+                {"content":"I like to use the Feynman technique, which basically means rather than creating a “cheat sheet”, I try to detail everything I know from scratch, as if I were explaining it to someone who has no prior knowledge. This strategy not only forces me to truly understand the ideas and go step by step, but also tests my ability to communicate those ideas, making it the ideal note taking strategy for people who work on a team. "}
+            ]
+        }
+    ]
+},
+
+{"title":"html","version":"v1","overview":"HTML, or hyper-text markup language, is a file format used to display content on a webpage. It is not exactly a programming language (an argument can be made both ways), but it has syntax and conventions just like one. A developer will use HTML to define what content will appear on the page.Your browser takes the HTML and constructs the DOM, or the 'document object model' which is essentially what gets displayed on the screen when you visit a web page.",
+    "text":[
+        {"title":"HTML tags",
+            "text":[
+                {"content":"Html is organized into elements, most of which have an 'opening' and 'closing' tag, within which lies the content. For example, a 'div' is a generic element used for almost anything, and it looks like this:","order":1},
+                {"content":"Every Html tag with inner Html, in other words content within the tag, has an opening and closing tag typed with side facing karats, and the closing tag includes a forward slash before the element name so a browser can distinguish between them:","order":3},
+                {"content":"In the above example, 'inner HTML' is what is displayed on the actual web page. The element 'wrapping' the content designates the type of content and defines things about the display of the content.","order":5},
+                {"content":"Some HTML elements are self-closing like <img>. This is a tag used for inserting images into a website. Because images do not have any content besides the image itself, it does not have a closing tag:","order":6}
+            ],
+            "code":[
+                {"caption":"lang: HTML","content":"\n<div>content</div>","order":2},
+                {"caption":"lang: HTML","content":"\n<element>inner HTML</element>","order":4},
+                {"caption":"lang: HTML","content":"\n<img>","order":7}
+            ]
+        }, 
+
+        {"title":"Attributes",
+            "text":[
+                {"content":"Html attributes are properties of elements which can change the display, content, or behavior of an element. All of these properties go in the opening tag rather than the closing tag. A lot of properties are specific to certain tags, such as 'src', which is commonly used to specify an image url:","order":1},
+                {"content":"The above example sets the src attribute on the image tag to 'image.jpg', specifying the path of the image to be displayed by the element. Attributes follow the same attribute='value' syntax. Multiple attributes are simply concatenated; for example, adding the 'alt' property will display the supplied text instead of the image if it fails to load:","order":3},
+                {"content":"Some properties are universal, such as the class, id, and style properties. Class is a property used to group similar elements together, making CSS much easier and less redundant. For example, you might want some <div> tags to display the same way, but other <div> tags to display differently. One can use the class attribute to group related elements and reference that in your CSS to style each of them all at once. For example:","order":5},
+                {"content":"Id is a property which can also be used for specifying styles, except element Ids are meant to be unique, and are often used for different purposes such as connecting javascript to a specific element or adding a bookmark to a page.", "order":8},
+                {"content":"You can also apply styles directly on an element by adding the style property, though this is not recommended:","order":10},
+                {"content":"This is called 'inline' styling. It is frowned upon because it will clutter the html and make it less readable and difficult to change; it is nearly always better to simply link an external stylesheet.","order":12}
+            ],
+            "code":[
+                {"caption":"lang: HTML","content":"\n<img src='image.jpg'>","order":2},
+                {"caption":"lang: HTML","content":"\n<img src='image.jpg' alt='image'>","order":4},
+                {"caption":"lang: HTML","content":"\n<div class='class'>content</div>\n<div class='class'>content</div>\n<div>content</div>","order":6},
+                {"caption":"lang: CSS","content":"\n.class { /* styles applied to first 2 divs, not the third. */\n\tcolor: red;\n}","order":7},
+                {"caption":"lang: HTML","content":"\n<div id='id-1'>content</div>\n<div id='id-2'>content</div>","order":9},
+                {"caption":"lang: HTML","content":"\n<div style='color: red;'></div>","order":11}
+                
+            ]
+        },
+
+        {"title":"Boilerplate",
+            "text":[
+                {"content":"Visual Studio code, the most popular code editor these days, comes built in with ways to auto generate code. To create a boilerplate html page, simply type !, then press tab, and it should generate something like this:","order":1},
+                {"content":"The first element defines the 'doctype', or document type, of the file. This should always be html. Then there is the html tag, within which are the head and body tags. Notice the lang attribute is set to en. This lets browsers know that the language of the document is english. The head tag defines important information about the document that browsers will use to display the page correctly, and the body tag contains the actual content of the page.","order":3},
+                {"content":"The body starts off empty, waiting for you to fill in your content. The head tag is mostly done up for you, except for the generic 'Document' title, which you can change to the title of your page. The meta tags define metadata about the document. The first meta tag defines the character set of the page to be UFT-8. This just means the characters within the content will be encoded according to the UFT-8 standard. It is almost never useful to use another character set such as ASCII. The second meta tag is there to tell legacy browsers that they are supported. This tag is almost always unnecessary these days. The third meta tag sets the width of the page to be the width of the viewport and sets the scaling to 100%, the default. This tag is very important for responsive web design, which just means the page must render appropriately on devices of different sizes, such as smartphones and tablets.","order":4},
+                {"content":"There are many cases where you'll have to add things to the head tag, but probably the most common will be linking a CSS document, which is done with the link tag:","order":5},
+                {"content":"The rel attribute defines the relationship between the html and the linked file. Here that is defined as 'stylesheet', so that the browser knows the file is supposed to style the page. The 'href' attribute specifies the path of the file to be linked.","order":7}
+            ],
+            "code":[
+                {"caption":"lang: HTML","content":"\n<!DOCTYPE html>\n<html lang='en'>\n\t<head>\n\t\t<meta charset='UTF-8'>\n\t\t<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n\t\t<meta name='viewport' content='width=device-width, initial-scale=1.0'>\n\t\t<title>Document</title>\n\t</head>\n\t<body>\n\n</body>\n</html>","order":2},
+                {"caption":"lang: HTML","content":"\n<head>\n\t<link rel='stylesheet href='styles.css'>\n</head>","order":6}
+            ]
+        },
+
+        {"title":"Common Tags",
+            "text":[
+                {"content":"The <html> tag is the parent tag to all tags except the !DOCTYPE declaration.","order":1},
+                {"content":"The <head> tag contains metadata about the document.  It is required to include a title tag, which specifies the title of the document. It can also include meta, link, script, noscript, style, or base tags.","order":2},
+                {"content":"The <link> tag will link external resources and specify their relationship. The stylesheet relationship was covered in the Boilerplate section, but another use case would be to specify a favicon, with the 'icon' relationship.","order":3},
+                {"content":"The <body> tag is the parent container for all the actual content of the page.","order":4},
+                {"content":"To add a header to your document, use an <h#> tag, where # is the importance of the header. The most important header should be denoted with the <h1> tag. Headers are numbered 1-6, in decreasing order according to their importance.","order":5},
+                {"content":"The generic text element is the p, or paragraph, tag. There are also a number of tags for formatting text such as the <strong> tag, which makes its contents bold. Some more examples would be the <i> tag which italicizes its contents, and the <em> tag which does the same, but also emphasizes the contents when read by a screen reader for the visually impared.","order":7},
+                {"content":"There are many ways to section off portions of the page's content. These sectioning elements are generally used to contain groups of elements for styling purposes. The most generic of these would be the <div> tag, but there is also the <section> tag, and the <span> tag.","order":9},
+                {"content":"There are a number of ways to do lists with HTML. All these lists have a container element and child elements for the list items. Here's an example of the unordered list, which displays its items with bullet points:","order":10},
+                {"content":"An ordered list works the same way, except it uses the <ol> container element, and displays its items numbered. Another list variant is the descriptive list, whose items have titles and descriptions like so:","order":12},
+                {"content":"The <a> tag is used for hyperlinks. The 'href' attribute specifies the url to navigate to, and the 'target' attribute tells the browser where to open the url; for instance, target='_blank' will open the URL in a new tab/window.","order":14},
+                {"content":"The <base> tag, usually put within the <head> of the document specifies a base url for links to point to by default:","order":16},
+                {"content":"The <button> tag is used to create buttons. The click event on a button can be linked to a click handler function which will execute some javascript. Technically, a click event can be bound to any element, but the button tag is a more semantic tag to use for this purpose, and it comes with default styles to make it obvious that it can be clicked. ","order":18},
+                {"content":"The <img> tag is used to add images to a web page. It must have its 'src' attribute point to the image resource, and should also include the 'alt' attribute, which will be displayed if the image cannot be loaded. The alt attribute is also used for screen readers. ","order":19},
+                {"content":"The <script> tag is used to add javascript to the document. Valid javascript can be added within the tag, or it can be left empty and an external .js file can be linked with the 'src' attribute. The script tag can be put in the head or body.","order":21},
+                {"content":"The <noscript> tag is used to render its contents in the case that javascript is not enabled in the browser. Again, this tag can go in the head or the body. ","order":23}
+            ],
+            "code":[
+                {"caption":"lang: HTML","content":"\n<h1>most important header</h1>\n<h3>less important header</h3>\n<h6>least important header</h6>","order":6},
+                {"caption":"lang: HTML","content":"\n<p>\n\tlorem ipsum ...\n\t<strong>bold text</strong>\n\t<i>italicized text</i>\n\t<em>emphasized text</em>\n</p>","order":8},
+                {"caption":"lang: HTML","content":"\n<ul>\n\t<li>unordered list item</li>\n\t<li>unordered list item</li>\n</ul>","order":11},
+                {"caption":"lang: HTML","content":"\n<dl>\n\t<dt>list item title</dt> <!-- list item name/title -->\n\t<dd>list item description/caption</dd> <!-- list item description/caption-->\n\t<dt>list item title</dt>\n\t<dd>list item description/caption</dd>\n</dl>","order":13},
+                {"caption":"lang: HTML","content":"\n<a href='URL' target='_blank'>navigate to URL</a>","order":15},
+                {"caption":"lang: HTML","content":"\n<head>\n\t<base href='URL' target='_blank'>\n</head>","order":17},
+                {"caption":"lang: HTML","content":"\n<img src='image.jpg' alt='image'>","order":20},
+                {"caption":"lang: HTML","content":"\n<script>valid javascript</script>\n<script src='path/app.js'></script>","order":22},
+                {"caption":"lang: HTML","content":"\n<noscript>\n\t<p>javascript is disabled</p>\n</noscript>","order":24}
+            ]
+        },
+
+        {"title":"Semantic HTML",
+            "text":[
+                {"content":"It's best to use semantic html, meaning html with meaningful tag names, to make the code more human readable, to improve search engine optimization so the browser can understand the document better and display search results more accurately, as well as to help screen readers be more accurate and immersive for the visually impared.","order":1},
+                {"content":"Here's an example of ugly non-semantic html:","order":2},
+                {"content":"Here's a better, more semantic version:","order":4}
+
+            ],
+            "code":[
+                {"caption":"lang: HTML","content":"\n<body>\n\t<div>Header</div>\n\t<div>\n\t\t<div>paragraph</div>\n\t\t<div>emphasised paragraph</div>\n\t\t<div>\n\t\t\t<div>list title</div>\n\t\t\t<div>list item</div>\n]\t\t\t<div>list item</div>\n\t\t\t<div>list item</div>\n\t\t</div>\n\t</div>\n\t<div>\n\t\t<div>footer</div>\n\t\t<div>address</div>\n\t</div>\n</body>","order":3},
+                {"caption":"lang: HTML","content":"\n<body>\n\t<h1>Header</h1>\n\t<section>\n\t\t<p>paragraph</p>\n\t\t<p><em>emphasised paragraph</em></p>\n\t\t<ul>\n\t\t\t<h2>list title</h2>\n\t\t\t<li>list item</li>\n\t\t\t<li>list item</li>\n\t\t\t<li>list item</li>\n\t\t</ul>\n\t</section>\n\t<footer>\n\t\t<h3>footer</h3>\n\t\t<address>address</address>\n\t</footer>\n</body>","order":5}
             ]
         }
     ]
@@ -106,23 +264,391 @@
 
 {"title":"css","version":"v1","overview":"CSS stands for cascading style sheet. CSS is a format for defining the style of HTML displayed in your browser.",
     "text":[
-        {"id":{"$oid":"62fa98df78f57ad879c5a22f"},"title":"CSS Properties",
+        {"title":"CSS Syntax",
             "text":[
-                {"id":{"$oid":"62fa992778f57ad879c5a230"},"content":"under construction. . . "}
+                {"content":"CSS is written in the following format: ","order":1},
+                {"content":"In CSS, the 'selector' specifies which element(s) to apply the styles to. Following the selector are the styles, housed in curly braces. The styles follow the property: value; format. Here are examples of all the ways to select elements:","order":3},
+                {"content":"Styles 'cascade' which just means the lower down on the list a style is, the more priority it has. For example if I set the background color on an element to red, but below that I have more styles that set the background color to blue, the background will be blue because the lower styles are applied last, meaning they take priority.","order":5}
+            ],
+            "code":[
+                {"caption":"lang: CSS","content":"\nselector {\n\tproperty: value;\n\tother-property: value;\n}","order":2},
+                {"caption":"lang: CSS","content":"\n/* by element name */\nh1 {\n\tproperty: value;\n}\n\n/* by class */\n.class {\n\tproperty: value;\n}\n\n/* by id */\n#id {\n\tproperty: value;\n}\n\n/* by element-specific class */\np.class {\n\tproperty: value;\n}\n\n/* by descendant selector\napplied to p tags within div */\n\ndiv p {\n\tproperty: value;\n}\n\n/* by child selector\nonly applied to direct children of a certain element */\ndiv > p {\n\tproperty: value;\n}\n\n/* by adjacent selector\napplied to element of a certain tag which come directly after an element */\nh1 + p {\n\tproperty: value;\n}\n\n/* by general sibling selector\napplied to all sibling elements of a certain tag after an element */\nh1 ~ p {\n\tproperty: value;\n}\n\n/* by multiple selectors */\nh1, #id, .class, div > p {\n\tproperty: value;\n}","order":4}
+            ]
+        },
+
+        {"title":"Box Model",
+            "text":[
+                {"content":"CSS follows the 'box model' which arranges the style of an element into nested rectangular boxes. The innermost box is the content of the element, followed by the padding around it. Borders go around the padding and background colors end at the border. After the border is the margin, which is not affected by background color. Here's an example of setting the properties of the box model on a paragraph tag.","order":1},
+                {"content":"The width and height are applied to the innermost content box. In the above example, the width is set to 50%, meaning 50% of the page's width. The max-width property is also set to 500px, meaning if the width of the page goes over 1000px, the width will remain fixed at 500px. The same can be done with height and max-height. ","order":3},
+                {"content":"The example uses the border shorthand syntax here, which is covered in the Common Properties section, so don't worry if it doesn't make sense. For now, just remember that '1px' refers to the width of the border. ","order":4},
+                {"content":"Notice that the margin property is set to 4 values instead of 1. The values for padding, border-width, and margin, are actually 4 values, corresponding to the 4 sides of the box. one can use shorthand to avoid redundant code when specifying these values. supplying a single value to padding, margin, or border width will apply that value on all 4 sides of the box model. supplying 2 values will apply the first value to the top and bottom, the second value to the sides. supplying 3 values will apply the values in this order: top, both sides, bottom. supplying 4 values will apply the values in this order: top, right, bottom, left. in other words, clockwise beginning at 12 o'clock.","order":5},
+                {"content":"Alternatively, one can specify these values individually like so, where (side) refers to the side of the box, top, right, bottom, or left:","order":6},
+                {"content":"For example:","order":8}
+            ],
+            "code":[
+                {"caption":"lang: CSS","content":"\ndiv {\n\twidth: 50%; \n\tmax-width: 500px;\n\theight: 200px; \n\tpadding: 20px; \n\tborder: 1px solid black;\n\tmargin: 20px 0 10px 0; \n}","order":2},
+                {"caption":"lang: CSS","content":"\npadding-(side):\nmargin-(side):\nborder-(side)-width:","order":7},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tborder-left-width: 10px;\n\tpadding-right: 20px;\n\tmargin-top: 100px;\n}","order":9}
+            ]  
+        },
+
+        {"title":"Common Style Properties",
+            "text":[
+                {"content":"In CSS, color refers to the color of the text content of an element. Background color is applied to the content and padding of an element. To denote which color to use, there are a couple options. CSS comes built in with common color names, but you can also specify the RGB/RGBA values directly:","order":1},
+                {"content":"There are a number of font properties in CSS, and even more ways to apply these properties. Here are some common examples:","order":3},
+                {"content":"Like with font properties, there are many text properties and property-values in CSS. Here are some examples:","order":5},
+                {"content":"CSS borders are often done with the border shorthand like so:","order":7},
+                {"content":"In the above example, '5px' refers to the width of the border, 'solid' is the border-style, and 'black' is the border color. These values can also be set explicitly:","order":9},
+                {"content":"The border-radius property will round the corners of the border (and padding/content). These can be set individually for each corner. Often the property is set to some pixel value, corresponding to the radius of the curve. The value can also be a percentage, where 100% makes a fully circular border:","order":11},
+                {"content":"To put a background image on an element, supply a url('path') for the image like so:","order":13},
+                {"content":"The background-repeat property determines how to repeat the image if it is too small to fill the container. The background-position property determines where in the container the first image will appear. The background-size will change the size and display of the image within the container:","order":15},
+                {"content":"Images can be manipulated in CSS a number of ways. The object-fit property will change the size/display of an image much like the background-size property for background images:","order":17},
+                {"content":"Notice in the above example that the display is set to block. This is because not setting the display to block can often result in an awkward margin below the image. The final section will cover the display property in depth.","order":19}
+            ],
+            "code":[
+                {"caption":"lang: CSS","content":"\np {\n\tcolor: red; /* sets text color to red */\n\tbackground-color: aliceblue; /* sets background color to aliceblue */\n}\n\n/* or */\n\np {\n\tcolor: rgb(230, 200, 105); /* sets text color to specified rgb value */\n\tbackground-color: rgba(0, 255, 255, 0.5); /* sets background color to specified rgba value */\n}","order":2},
+                {"caption":"lang: CSS","content":"\np {\n\tfont-size: large; /* makes text large */\n\tfont-weight: bolder; /* makes text bold */\n\tfont-family: monospace; /* sets the font of text */\n} ","order":4},
+                {"caption":"lang: CSS","content":"\np {\n\ttext-align: center; /* aligns text to center */\n\ttext-decoration: underline; /* underlines text */\n\ttext-shadow: 1px 1px white; /* adds white text shadow 1px to the right and 1px below the original text */\n}","order":6},
+                {"caption":"lang: CSS","content":"\ndiv { /* shorthand */\n\tborder: 5px solid black;\n}","order":8},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tborder-color: aqua; /* colors border aqua */\n\tborder-style: dashed; /* border is dashed */\n\tborder-width: 10px 0 10px 5px; /* 10px on the top and bottom, 0px on the right, 5px on the left */\n}","order":10},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tborder: 2px double dodgerblue;\n\tborder-radius: 5px; /* rounded corners */}\n\ndiv {\n\tborder: 2px double dodgerblue;\n\tborder-radius: 100%; /* circular border */\n}","order":12},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tbackground-image: url('image_url');\n}","order":14},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tbackground-image: url('image_url');\n\tbackground-position: center; /* image will appear in the center of the container */\n\tbackground-size: cover; /* resizes image to cover the entire container without changing tha aspect ratio */\n\tbackground-repeat: no-repeat; /* image will not repeat */\n}","order":16},
+                {"caption":"lang: CSS","content":"\nimg {\n\tobject-fit: contain; /* fits image to be fully within by the container without changing aspect ratio*/\n\tdisplay: block;\n}","order":18}
+            ]
+
+        },
+
+        {"title":"CSS Position",
+            "text":[
+                {"content":"One of the most important and versatile properties is the position property, which determines the positioning of an element within the document flow. If you do not understand CSS positioning, you may find it hard to do even seemingly simple things. Here are all possible values for the position property.","order":1},
+                {"content":"Static position is the default value. This just means it renders normally in the document.","order":3},
+                {"content":"Adding relative position to an element alone will not change anything about the page. A relatively positioned element is positioned relative to its normal position in the document. This is where the top, bottom, left, and right properties come in:","order":4},
+                {"content":"The above example positions the div 100px above where it would normally render, with a 100px gap between its bottom and its original position. The rest of the document will render exactly as it normally would; it does not try to fill in any gaps left by a relatively positioned element. ","order":6},
+                {"content":"Fixed position pulls the element fully out of the document flow, meaning any gaps left behind will be filled in as if the element were never there in the first place. Fixed position elements are rendered relative to the viewport, meaning they will never move from their position even as the user scrolls around. For example:","order":7},
+                {"content":"The fixed position element will render at the very top of the page. This is a basic example of a header that stays fixed at the top even on scroll. Because the width is 100%, there will always be this element covering the top of the page. Keep in mind that because it is removed from the document flow, the top 100px of the rest of the page will always be covered by the header, so a top margin of 100px will need to be added to the body in order for it to work properly.","order":9},
+                {"content":"Absolute position renders an element relative to its nearest positioned ancestor. If all its ancestors have static position, or if it has no ancestors, absolute position behaves just like fixed position where the element is rendered relative to the viewport. Absolutely positioned elements are pulled from the document flow just like fixed position elements. Because absolutely positioned elements often need an ancestor with some position other than static, the most common use case for relative position is actually just to house absolutely positioned elements. For example, if we wanted a p tag to be positioned relative to its parent div, but we wanted the parent div to behave normally, we could do it like this:","order":10},
+                {"content":"In this example, the div is rendered relatively, but no top, bottom, left, or right values are specified, so it is rendered normally. Then the p tag is rendered relative to its nearest positioned ancestor, the div. ","order":12},
+                {"content":"Sticky position is probably the most complicated position property. Elements with sticky position start as relatively positioned elements, meaning they behave normally, until they reach a certain place relative to the viewport. Once the element reaches the specified position, it will 'stick' there, and behave as fixed position, until it reaches its original position again, where it goes back to relative. For example, this div will start off behaving like static/relative position, then when the user scrolls down so that the div reaches the top of the viewport it will stick there until the user scrolls back up to its original position:","order":13},
+                {"content":"In some cases, multiple positioned elements will overlap each other, for instance if an absolutely positioned element is covered by a fixed position element. How does the document know which element covers which? It knows by the z-index property. By default, the element furthest down in the actual HTML will be rendered on 'top' so to speak. To change the default order, apply a z-index property to the elements. The element with the higher z-index will appear on top of the other element. ","order":15}
+            ],
+            "code":[
+                {"caption":"lang: CSS","content":"\ndiv {\n\tposition: static;\n\tposition: relative;\n\tposition: absolute;\n\tposition: fixed;\n\tposition: sticky;\n}","order":2},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tposition: relative;\n\tbottom: 100px;\n}","order":5},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tposition: fixed;\n\ttop: 0px;\n\twidth: 100%;\n}","order":8},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tposition: relative;\n}\n\np {\n\tposition: absolute;\n\ttop: 0px;\n\tleft: 50px;\n}","order":11},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tposition: sticky;\n\ttop: 0px;\n}","order":14}
+            ]
+        },
+
+        {"title":"CSS Display",
+            "text":[
+                {"content":"Another important property that will ease your CSS suffering is the display property. This property controls the layout of elements. All elements are either 'block' or 'inline' by default","order":1},
+                {"content":"Block elements are always rendered on a new line below the previous element. These elements will take up the entire available width. Some elements that are block by default are h1-6, div, and p.","order":2},
+                {"content":"Inline elements are not rendered on a new line, and they will only take as much width as they need. Some elements that are inline by default include span, img, and a. ","order":3},
+                {"content":"Setting a display of none will make the element disappear from the document. This is useful for removing an element visually, without having to actually remove it from the HTML. This can also be done with 'visability: hidden;', but an important difference is that elements with hidden visibility still occupy their position in the page, they are just invisible. Elements with no display will be removed from the document and any gaps will be filled in as if the element never existed. ","order":4},
+                {"content":"One of the most useful display properties is flex. This turns the element into a flex container. There's a lot to cover in flex containers, but most important is the ability to arrange child elements with the 'justify-content' and 'align-items' properties. A flex container will arrange its children in a row by default (this can be changed with 'flex-direction'). The align items property will align the children vertically in some way, the justify-content property arranges the children horizontally. If flex-direction becomes column, the roles are reversed where align items will handle horizontal alignment, and justify content, vertical arrangement. ","order":5},
+                {"content":"Some common values for 'align-items' are 'center', which aligns the children in the center, and flex-start/flex-end, which put the children to the top or bottom of the flex box respectively. ","order":6},
+                {"content":"Some common values for 'justify-content' are 'center', which crams the children together in the center of the container, 'space between', which leaves an even gap between each element, and 'space-around' which sets an equal gap on both sides of each child.","order":7},
+                {"content":"Another fancy display property is 'Grid', which unsurprisingly turns its content into a grid/table. ","order":8},
+                {"content":"To specify the number and width of columns in a grid, add the 'grid-template-columns' property like so:","order":9},
+                {"content":"The above example will make 4 columns of width 'auto', which just means the width of the columns will all be equal, and fill up as much space as the container will allow. If the number of items is more than 4,  the grid will automatically add another row of items. ","order":11},
+                {"content":"It's also possible to set widths for the rows with the 'grid-template-rows' property. This works pretty much the same as for columns. ","order":12},
+                {"content":"To add gaps between columns and/or rows, add the 'gap' property. Specifying a single value will set the gap between rows and columns to the supplied value. Using two values will apply the first to the rows and the second to the columns. Alternatively, you can use the column-gap or row-gap properties to specify these values individually. ","order":13},
+                {"content":"Beyond this there's a whole lot more to learn about grids, flex containers, and CSS in general, but this should be enough to get started. To learn more, I recommend w3schools.com, they have lots of free and interactive content about CSS. There are also plenty of other resources out there to help with practically any CSS problem you might run into. CSS can be a headache, but it doesn't have to be if you understand the fundamentals and look into the modules carefully. Good luck, try not to shoot yourself in the foot. ","order":14}
+            ],
+            "code":[
+                {"caption":"lang: CSS","content":"\ndiv {\n\tdisplay: grid;\n\tgrid-template-columns: auto auto auto auto;\n}","order":10}
+            ]
+        }
+
+    
+    ]
+},
+
+{"title":"react","version":"v1","overview":"React is a frontend library which adds a host of helpful functions and classes to javascript all for the purpose of simplifying the frontend development process. React is made by facebook/meta and is the most popular way to design a website frontend these days. React uses a syntax called JSX, which is essentially HTML but in javascript form. JSX is useful because we can write a function to return valid HTML, which can then be rendered in the application. This is by no means a comprehensive guide to react, but it will cover some of the more important concepts and details. ",
+    "text":[
+        {"title":"React Components",
+            "text":[
+                {"content":"What is a component? Pretty much all frontend frameworks use a concept called component based architecture to organize the application. This just means we define the content and behavior for certain parts of the application individually, organizing the application to be more programmer-friendly, and making it easy to reproduce a section of the app without  having to redefine the component every time. ","order":1},
+                {"content":"Early react syntax used classes to define components, but now people tend to use functional components, which look something like this:","order":2},
+                {"content":"You can see it is simply a function which returns some JSX. For this to work, you also have to import react like so:","order":4},
+                {"content":"Components can be nested, meaning we can reuse components as building blocks for other components, first by importing them, and then using them in our JSX just like a regular HTML tag:","order":6},
+                {"content":"Notice two important things about the example above. One, we wrap the two elements in a 'container' element; this is because a functional component must return a single element. And two, the class of the container is defined as 'className', not class. This is because we are technically in vanilla javascript, and class is a reserved keyword. So in react JSX, we use className instead of class.","order":8},
+                {"content":"Make sure to export the component before you try to import it into another:","order":9},
+                {"content":"Usually, we will wrap our entire app into one parent component, creating a nested 'component tree'.","order":11}
+            ],
+            "code":[
+                {"caption":"lang: javascript","content":"\nconst component = () => {\n\treturn ( <h1>Hello world</h1> );\n}","order":3},
+                {"caption":"lang: javascript","content":"\nimport react from 'react';","order":5},
+                {"caption":"lang: javascript","content":"\nimport childComponent from './childComponent.js'\n\nconst parentComponent = () => {\n\treturn (\n\t\t<div className='container'>\n\t\t\t<h1>Hello World</h1> \n\t\t\t<childComponent />\n\t\t</div>\n\t);\n}","order":7},
+                {"caption":"lang: javascript","content":"\nconst component = () => {\n\treturn ( <h1>Hello world</h1> );\n}\n\nexport default component;","order":10}
+            ]
+        },
+
+        {"title":"Hooks",
+            "text":[
+                {"content":"Ok, we can create components, but how do we make them more useful than simple HTML? With our knowledge so far, we know how to create a function to return some HTML, but what if we wanted that HTML to change based on some variable? This is where a concept called 'state' comes in. We can bind the content or even the attributes of an HTML tag to some state variable, then write code to programmatically change that state according to our needs. Once we define the state properly, react will automatically re-render the elements with the proper changes. React has a number of helpful 'Hooks', which are essentially just helpful functionality which we can 'hook' into our app. We can define some state with the 'useState' hook within our functional component:","order":1},
+                {"content":"We have to import 'useState' from react to use it, then we call it within the body of our component to initialize our state. useState is a function which takes a single argument, the initial value of the state variable. Notice we assign an array of two variables to the useState function. This hook returns an array of two items, the state variable and the setter function. In the above example, 'state is the actual state variable, which we can then use as content within our component for example:","order":3},
+                {"content":"We use curly braces to add our variables within the JSX.","order":5},
+                {"content":"'setState' is the setter function which we can use to change the state within our code. To change the state we have to use the setter function to change the state; we cannot simply reassign the state variable because react will not know to re-render. We can use the setter function like so:","order":6},
+                {"content":"This function will not just magically fire when we want it to, you must bind it to some event. For instance, if our state is a number and we want to use a button to increment that number, we could add a click handler function to that button, and have it fire the setter function with the new value:","order":8},
+                {"content":"The useEffect hook is probably the second most useful after useState. This hook is used to execute functionality within the component. The hook takes two arguments: A function, and an array of dependencies. The dependency array determines when to fire the function. There are 3 main cases to consider. First, the dependency array might contain some state variables. In this case the function will fire on the initial render of the component, and again whenever the state variable(s) changes. Second, the dependency array might be empty, in which case the function will only fire on the initial render. Third, there might be no dependency array supplied, in which case the function is fired each time the component renders. ","order":10},
+                {"content":"Remember, if we want to change our state it's not enough to simply call the setter function to change the state, it must be bound to some event. Let's say in the example above we want some other variable to change based on changes to the count. We can set up a second state variable, then use the useEffect hook to change that state when the count changes:","order":11},
+                {"content":"This example will toggle the text color from red to blue and vice versa as the count increments. Notice we use the same curly bracket syntax to bind state to HTML attributes as well as content. ","order":13}
+            ],
+            "code":[
+                {"caption":"lang: javascript","content":"\nimport react, { useState } from 'react'\n\nconst statefulComponent = () => {\n\tconst [state, setState] = useState('initial value')\n\n\treturn ( <h1>Hello world</h1> );\n}","order":2},
+                {"caption":"lang: javascript","content":"\n    return ( <div>{state}</div> );","order":4},
+                {"caption":"lang: javascript","content":"\nsetState('new value')","order":7},
+                {"caption":"lang: javascript","content":"\nconst statefulComponent = () => {\n\tconst [count, setCount] = useState(0)\n\n\tconst handleClick = () => {\n\t\tsetCount(count++)\n\t}\n\n\treturn ( \n\t\t<div>\n\t\t\t<div>number: {count}</div> \n\t\t\t<button type='button' onClick={handleClick()}>increment</button>\n\t\t</div>\n\t);\n}","order":9},
+                {"caption":"lang: javascript","content":"\nimport react,  { useState, useEffect } from 'react'\nconst statefulComponent = () => {\n\tconst [count, setCount] = useState(0)\n\tconst [state, setState] = useState('color: red;')\n\n\tconst handleClick = () => {\n\t\tsetCount(count++)\n\t}\n\n\tuseEffect(() => {\n\t\tif (count % 2 === 0) {\n\t\t\tsetState('color: blue;')\n\t\t} else {\n\t\t\tsetState('color: red;')\n\t\t}\n\t}, [count])\n\n\treturn ( \n\t\t<div>\n\t\t\t<div style={state}>number: {count}</div> \n\t\t\t<button type='button' onClick={handleClick()}>increment</button>\n\t\t</div>\n\t);\n}","order":12}
+            ]
+        },
+
+        {"title":"Rendering",
+            "text":[
+                {"content":"Now that we can define our component tree, it's time to render it into our HTML. In our HTML we have a single empty div tag with the id of 'root':","order":1},
+                {"content":"This is the root component which our app will be rendered to. To do this, we must create an index.js file to go along with index.html, where we can use the 'createRoot' function imported from 'ReactDOM' to create our root, then call the render function on it and pass in our app component:","order":3},
+                {"content":"Notice in the HTML, the index.js file is not the script being imported. This is because we require a build step for our code to be usable within the browser. We have to use a tool called webpack, and a compiler called 'babel' to take our code, compile it into vanilla javascript, and bundle it into a single script file: 'index.bundle.js'. I won't go into detail about webpack and babel here because they are fairly complicated. If you want to circumvent the headache of configuring webpack yourself, you can use a tool called create-react-app to initialize a react application which will hide the webpack configuration from you so you don't have to worry about it. ","order":5}
+            ],
+            "code":[
+                {"caption":"lang: HTML","content":"\n<body>\n\t<div id='root'></div>\n\t<script src='/index.bundle.js'></script> \n</body>","order":2},
+                {"caption":"lang: javascript","content":"\nimport * as ReactDOM from 'react-dom';\nimport appComponent from './app.js'\n\nconst root = ReactDOM.createRoot(\n\tdocument.getElementById('root')\n);\n\nroot.render(appComponent);","order":4}
+            ]
+        }
+    ]
+
+
+},
+
+{"title":"angular","version":"v1","overview":"under construction. . ."},
+
+{"title":"vue.js","version":"v1","overview":"Vue.js is an open source frontend framework for easily creating reactive single page applications. It is not the most popular option in the industry, but it is the most loved frontend framework by developers. Personally I find Vue to be the simplest and easiest way to create complex frontends and it has perhaps the easiest learning curve of the frameworks I've tried.",
+    "text":[
+        {"title":"Project Setup",
+            "text":[
+                {"content":"To get started in Vue, install it along with the vue cli tools globally on your device from their website. From there you can easily generate a boilerplate app from the terminal with 'vue create <app name>'."},
+                {"content":"When you run vue create, it will ask you to select from a number of configuration options such as the version of Vue to use, whether you want to use typescript, the linter, the vue router, Vuex state management, and testing libraries"},
+                {"content":"The project directory will include the package.json preloaded with scripts for running the development server (npm run serve), and building the app (npm run build). The public folder will include a default favicon and the base HTML file. The src folder will include an assets folder for static assets such as images, a components folder to house components, the main ‘App.vue’ file, defining the highest level app component, and the main.js file, which mounts the App component onto the page."}
+            ]
+        }, 
+
+        {"title":"Component Structure",
+            "text":[
+                {"content":"The App.vue file should look like a weird version of HTML, with three main elements: template, script, and style. The template element defines the HTML template for the component, the script element houses the functionality, and the style tag contains CSS for the app. This is the basic format for defining vue components:","order":1},
+                {"content":"The script tag is probably the most complex and important tag to understand. Notice in the App.vue file how the script tag exports an object. This is how to define functionality of a component. Adding certain properties to this object is at the core of so many of Vue's useful features. To start, let's try to understand how importing components works. ","order":3},
+                {"content":"If you used the vue cli to initialize the project, there will already be a 'HelloWorld' component in the components folder. Look at the App.vue file to see how it is imported into the app component. In the script tag, notice that the HelloWorld component is imported, and also declared in the 'components field of the exported object:                ","order":4},
+                {"content":"Now look up at the template tag to see how the component is added to the component template:","order":6},
+                {"content":"If you do not import and declare the component in the script tag, you won't be able to use it in the template.","order":8}
+            ],
+            "code":[
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<!-- template -->\n</template>\n\n<script>\n\t// script\n</script>\n\n<style>\n\t/* styles */\n</style>","order":2},
+                {"caption":"lang: Vue/JS","content":"\n<script>\nimport HelloWorld from './components/HelloWorld.vue'\n\nexport default {\n\tname: 'App',\n\tcomponents: {\n\t\tHelloWorld\n\t}\n}\n</script>","order":5},
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<img alt='Vue logo' src='./assets/logo.png'>\n\t<HelloWorld msg='prop'/>\n</template>","order":7}
+            ]
+        },
+        
+        {"title":"Props",
+            "text":[
+                {"content":"Notice that the HelloWorld component in the App.vue template has a 'msg' property, set to a string:","order":1},
+                {"content":"This is how component props are passed in Vue.js. Props are essentially a way to pass data to a component, almost like the arguments of a function. The props are used to customize things about the component, such as its content. This is very helpful for reusing components with slight differences. Instead of redefining a whole new component, you need only pass different props.","order":3},
+                {"content":"Look at the HelloWorld component's script tag to see how props are defined in Vue. The script object should include a 'props' object, with 'msg' set to 'String':","order":4},
+                {"content":"This is telling the component that it should be passed a msg string which it can use in its template. In the template there should be an h1 tag with the msg prop within double curly braces (called mustache syntax):","order":6},
+                {"content":"This means an h1 tag is being rendered with the msg as its inner HTML. All content bindings are done with this mustache syntax.","order":8},
+                {"content":"Open the app with the live reload server (npm run serve), and head to localhost:8080 in your browser of choice to view this in action. Once the app is loaded, change the msg prop on the HelloWorld component within the App.vue file to see how passing different props changes the content of the h1 tag. ","order":9}
+            ],
+            "code":[
+                {"caption":"lang: Vue/JS","content":"\n  <HelloWorld msg='prop'/>","order":2},
+                {"caption":"lang: Vue/JS","content":"\n<script>\nexport default {\n\tname: 'HelloWorld',\n\tprops: {\n\t\tmsg: String\n\t}\n}\n</script>","order":5},
+                {"caption":"lang: Vue/JS","content":"\n <h1>{{ msg }}</h1>","order":7}
+            ]
+        },
+
+        {"title":"State",
+            "text":[
+                {"content":"Vue makes it easy to handle state within a component with the data function. To add some state to your component, add a data function to the script object, and have it return an object with your desired state as its properties:","order":1},
+                {"content":"To add the state to your template, use mustache syntax, but make sure to use the this.state syntax like so:","order":3},
+                {"content":"Now let's make our state dynamic with another helpful property of the script object: methods. Let's say we want our state to start at 0 and increment by 1 every time its container element is clicked. We would do this by adding an 'increment' function to the methods object like so:","order":5},
+                {"content":"Notice will always reference the state with the 'this' keyword. ","order":7},
+                {"content":"Then we need to bind a click event to this function:","order":8}
+            ],
+            "code":[
+                {"caption":"lang: Vue/JS","content":"\n<script>\nexport default {\n\tdata() {\n\t\treturn {\n\t\t\tstate: 'state'\n\t\t}\n\t}\n}\n</script>","order":2},
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<div>{{this.state}}</div>\n</template>","order":4},
+                {"caption":"lang: Vue/JS","content":"\n<script>\nexport default {\n\tdata() {\n\t\treturn {\n\t\t\tstate: 0\n\t\t}\n\t},\n\tmethods: {\n\t\tincrement() {\n\t\t\tthis.state = this.state++\n\t\t}\n\t}\n}\n</script>","order":6},
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<div @click='increment()'>{{this.state}}</div>\n</template>","order":9}
+            ]
+        },
+
+        {"title":"Property bindings",
+            "text":[
+                {"content":"In the last example, we bound the click event to a method, meaning that method will fire whenever the container div is clicked, and we've also learned to put dynamic content into the template with mustache syntax. Beyond these, Vue has a host of other directives' to use data in the template which cover a huge range of use cases. Here I'm going to go into detail with some of the more common ones. ","order":1},
+                {"content":"The most common is probably the generic attribute binding with the v-bind directive. With this directive, we can bind our dynamic state to any html attribute we want. For example, we can change the href on a link dynamically by binding it to our state:","order":2},
+                {"content":"Because attribute binding is so common in Vue, there is a shorthand for this directive:","order":4},
+                {"content":"If we need to bind more than one attribute to an element, it's possible to avoid declaring these individually. We can create an object with the desired attributes and v-bind the object directly to the element like so:","order":6},
+                {"content":"We know how to add content to our template, but what if we want to add actual HTML, not just plain text? If you try to add html with mustache syntax, it will interpret it as plain text. To add html to an element, use the v-html directive and supply the html string:","order":8},
+                {"content":"The v-if directive can be used to reactively remove elements from the template based on a boolean state value:","order":10},
+                {"content":"When the boolean is truthy, the element is nowhere to be found, otherwise it renders normally. ","order":12},
+                {"content":"The v-for directive is used to render multiple elements based on an array of some data. We don't have to specify the number of elements to render, Vue will automatically render the proper amount based on the length of the list. For example, let's say we have a list of names that looks like this:","order":13},
+                {"content":"We can render each name in its own div with the v-for directive:","order":15},
+                {"content":"'name' in this instance is just our chosen alias for each item in the array. ","order":17},
+                {"content":"Because of the way Vue updates content within a v-for element, the key attribute is required for the list to update properly. If you are dealing with an array of objects, it is recommended to have some unique id property on each object so you can bind the keys like this:","order":18},
+                {"content":"If you aren't dealing with an array of objects, like in our names example, you can use the item itself as the key:","order":20},
+                {"content":"Be careful with this though, it will break if two of the items are identical; the keys must be unique.","order":22},
+                {"content":"V-on is another common directive used for handling events. Believe it or not, we've actually already seen this directive when we bound the click event to increment method. The same code could have been written:","order":23},
+                {"content":"Because this directive is so common, it can be abbreviated to the @ symbol.","order":25}
+            ],
+            "code":[
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<a v-bind:href='this.link'></a>\n</template>","order":3},
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<a :href='this.link'></a>\n</template>","order":5},
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<a v-bind='this.attr_object'></a>\n</template>\n\n<script>\nexport default {\n\tdata() {\n\t\treturn {\n\t\t\tattr_object: {\n\t\t\t\tclass: 'class',\n\t\t\t\thref: 'https://google.com'\n\t\t}\n\t\t}\n\t}\n}\n</script>","order":7},
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<div v-html='this.html_string'></div>\n</template>","order":9},
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<div v-if='this.bool'>conditionally rendered div</div>\n</template>","order":11},
+                {"caption":"lang: Vue/JS","content":"\nnames: [\n\t'john',\n\t'alice',\n\t'bob',\n\t'charlie'\n]","order":14},
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<div v-for='name in this.names'>{{name}}</div>\n</template>","order":16},
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<div v-for='object in this.array' :key='object.id'>{{object.content}}</div>\n</template>","order":19},
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<div v-for='name in this.names' :key='name'>{{name}}</div>\n</template>","order":21},
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<div v-on:click='increment()'>{{this.state}}</div>\n</template>","order":24}
+            ]
+        },
+
+        {"title":"Lifecycle Hooks",
+            "text":[
+                {"content":"Recall that the script tag exports an object filled with all sorts of data about the component. So far we've seen instances of the components property, data function, and methods object.","order":1},
+                {"content":"Some more common properties for this object include the lifecycle hooks, which are functions which run at certain times during the lifecycle of the component. For instance, the created method fires just before the template is compiled:","order":2},
+                {"content":"The mounted method fires after the template is compiled, just before the component is actually rendered:","order":4},
+                {"content":"The update method fires any time the component data changes:","order":6},
+                {"content":"The unmounted method fires when the component is, you guessed it, unmounted:","order":8}
+            ],
+            "code":[
+                {"caption":"lang: Vue/JS","content":"\n<script>\nexport default {\n\tcreated() {\n\t\t//do something\n\t}\n}\n</script>","order":3},
+                {"caption":"lang: Vue/JS","content":"\n<script>\nexport default {\n\tmounted() {\n\t\t//do something\n\t}\n}\n</script>","order":5},
+                {"caption":"lang: Vue/JS","content":"\n<script>\nexport default {\n\tupdated() {\n\t\t//do something\n\t}\n}\n</script>","order":7},
+                {"caption":"lang: Vue/JS","content":"\n<script>\nexport default {\n\tunmounted() {\n\t\t//do something\n\t}\n}\n</script>","order":9}
+            ]
+        },
+
+        {"title":"Styles",
+            "text":[
+                {"content":"The style element is pretty simple to understand, it simply contains CSS. adding the 'scoped' keyword to the opening tag will scope the styles to the component, omitting this keyword makes the styles global to the entire app. To use a CSS pre-processor, specify the 'lang' property like so:"}
+            ],
+            "code":[
+                {"caption":"lang: Vue/JS","content":"\n<style lang='sass' scoped>\n\t/* styles */\n</style>"}
+            ]
+        },
+
+        {"title":"Building and Rendering",
+            "text":[
+                {"content":"The main.js file is what renders the app to the HTML. The 'createApp' function takes a component as its argument and generates the entire component tree. The app can then be mounted to a specific element in the html with the 'mount' function which takes the selector of the element as its argument:","order":1},
+                {"content":"To build the actual application, run 'npm run build'. This generates the actual HTML and javascript files which can run the app and puts them in the /dist folder. Like other frameworks, Vue takes your code and converts it into vanilla javascript which then generates the entire app within the empty HTML page.","order":3}
+
+            ],
+            "code":[
+                {"caption":"lang: Vue/JS","content":"\nimport { createApp } from 'vue'\nimport App from './App.vue'\n\ncreateApp(App).mount('#app')","order":2}
             ]
         }
     ]
 },
 
-{"title":"frontend","version":"v1","overview":"under construction. . ."},
+{"title":"Node/Express","version":"v1","overview":"under construction. . ."},
 
-{"title":"backend","version":"v1","overview":"under construction. . ."},
+{"title":"sql","version":"v1","overview":"SQL, or structured query language, is a common language for interacting with databases. There are many variations of SQL used for different databases, but all of them are mostly the same, and generally all support the most common types of queries such as ‘SELECT’ or ‘DELETE’. This tutorial will cover the basics of reading, updating, inserting, and deleting data from an SQL table. There's plenty more to learn beyond this, but oftentimes the more advanced syntaxes will diverge from database to database. This tutorial will cover general syntax common to all SQL databases. ",
+    "text":[
+        {"title":"Tables",
+            "text":[
+                {"content":"SQL, or structured query language, is a common language for interacting with databases. There are many variations of SQL used for different databases, but all of them are mostly the same, and generally all support the most common types of queries such as ‘SELECT’ or ‘DELETE’. This tutorial will cover the basics of reading, updating, inserting, and deleting data from an SQL table. There's plenty more to learn beyond this, but oftentimes the more advanced syntaxes will diverge from database to database. This tutorial will cover general syntax common to all SQL databases. "}
+            ]
+        },
 
-{"title":"react","version":"v1","overview":"under construction. . ."},
+        {"title":"Select Statements",
+            "text":[
+                {"content":"To interact with a table, we use SQL statements with keywords which do various things.","order":1},
+                {"content":"Perhaps the most common statement is the SELECT FROM statement, which reads data from the database. Here's an example:","order":2},
+                {"content":"This example retrieves the entire 'name' column from the 'users' table.","order":4},
+                {"content":"To get multiple columns, simply concatenate the column names with a comma:","order":5},
+                {"content":"To get all the columns at once, use an asterisk like so:","order":7},
+                {"content":"If you need to only get unique values from a certain column or columns, use the DISTINCT keyword after select:","order":9},
+                {"content":"To get data only if it passes a certain condition, you can add a WHERE clause to the end of your query:","order":11},
+                {"content":"We can use conditions to, for example, get a user's name, but only if their user id is 1:","order":13},
+                {"content":"Or we can get all users with an id greater than 5:","order":15},
+                {"content":"SQL comes with operators to use in your where statements such as >, <, =, >=, <=, or even BETWEEN, which gets a certain range of values.","order":17},
+                {"content":"We can also get our selections in ascending or descending order with the ORDER BY statement. The default order is ascending In our table of users, we can order our query by name, to get our data sorted into ascending alphabetical order:","order":18},
+                {"content":"If we have duplicates, we can specify a second column to order by. For example, we might order by name, then by id:","order":20},
+                {"content":"If we want our query to be sorted in descending order, we add a DESC keyword at the end:","order":22},
+                {"content":"Let's say we want to order first by name in ascending order, then by id in descending order. In this case we would add the ASC and DESC keywords after each column name.","order":24}
+            ],
+            "code":[
+                {"caption":"lang: SQL","content":"\nSELECT name FROM users;","order":3},
+                {"caption":"lang: SQL","content":"\nSELECT name, id FROM users;","order":6},
+                {"caption":"lang: SQL","content":"\nSELECT * FROM users;","order":8},
+                {"caption":"lang: SQL","content":"\nSELECT DISTICT name FROM users;","order":10},
+                {"caption":"lang: SQL","content":"\nSELECT name FROM users WHERE condition;","order":12},
+                {"caption":"lang: SQL","content":"\nSELECT name FROM users WHERE id=1;","order":14},
+                {"caption":"lang: SQL","content":"\nSELECT name FROM users WHERE id>5;","order":16},
+                {"caption":"lang: SQL","content":"\nSELECT name FROM users ORDER BY name;","order":19},
+                {"caption":"lang: SQL","content":"\nSELECT name FROM users ORDER BY name, id;","order":21},
+                {"caption":"lang: SQL","content":"\nSELECT name FROM users ORDER BY name, id DESC;","order":23},
+                {"caption":"lang: SQL","content":"\nSELECT name FROM users ORDER BY name ASC, id DESC;","order":25}
+            ]
+        },
 
-{"title":"angular","version":"v1","overview":"under construction. . ."},
+        {"title":"Insert Statements",
+            "text":[
+                {"content":"To insert a new row of data into our table, SQL uses the INSERT INTO keywords, followed by the VALUES keyword. Here's a basic example:","order":1},
+                {"content":"This statement inserts a new user of id 10 and a name of Sallie. Here we are inserting without specifying the column names, but we could if we wanted to. This statement is equivalent to the one above:","order":3},
+                {"content":"When we omit column names, SQL automatically inserts the values in order, so if for whatever reason we wanted to insert our new user in reverse order, we would also need to specify the columns in reverse order. Otherwise, the id and name would be mixed up.","order":5},
+                {"content":"If we want to leave certain columns empty, we simply omit that column and value from the insert statement. For instance, we could add a new user with their name, but not specify an id:","order":6},
+                {"content":"Leaving this kind of gap in the table will auto fill with the value of null. We can check for null values in a WHERE clause with the IS NULL operator:","order":8}
+            ],
+            "code":[
+                {"caption":"lang: SQL","content":"\nINSERT INTO users VALUES ('10', 'sallie');","order":2},
+                {"caption":"lang: SQL","content":"\nINSERT INTO users (id, name) VALUES ('10', 'sallie');","order":4},
+                {"caption":"lang: SQL","content":"\nINSERT INTO users (name) VALUES ('sallie');","order":7},
+                {"caption":"lang: SQL","content":"\nSELECT name FROM users WHERE id IS NULL;","order":9}
+            ]
+        },
 
-{"title":"vue.js","version":"v1","overview":"under construction. . ."},
+        {"title":"Update Statements",
+            "text":[
+                {"content":"To update data within an SQL table, we use the UPDATE SET statement. Let's say that for whatever reason we want to set all ids in our users table to zero. We would do that like this:","order":1},
+                {"content":"Ok so we can set entire columns to a certain value, but what if we want to only update a specific value? We can do this with the WHERE clause. Lets update the users with an id of 0 to be named 'jack':","order":3},
+                {"content":"The Update statement will only change the values on rows which pass the condition in the WHERE clause. If the WHERE clause is omitted, all items in the column or columns will be updated.","order":5}
+            ],
+            "code":[
+                {"caption":"lang: SQL","content":"\nUPDATE users SET id = '0';","order":2},
+                {"caption":"lang: SQL","content":"\nUPDATE users SET name='jack' WHERE id='0';","order":4}
+            ]
+        },
 
-{"title":"express","version":"v1","overview":"under construction. . ."}
+        {"title":"Delete Statements",
+            "text":[
+                {"content":"SQL uses the DELETE FROM statement to remove rows from a table. Again, the WHERE clause comes in to specify which rows to operate on. Here's an example where we remove everyone named 'jack' from our users table:","order":1},
+                {"content":"If the where clause is omitted, all rows in the table will be removed, and the columns will be left intact. ","order":3}
+            ],
+            "code":[
+                {"caption":"lang: SQL","content":"\nDELETE FROM users WHERE name='jack';","order":2}
+            ]
+        }
+    ]
+
+},
+
+{"title":"data-structures-and-algorithms","version":"v1","overview":"Data structures and Algorithms is a blanket term that basically refers to understanding why a particular algorithm is better than another, and/or why it might be better to store data in one pattern or another. An Algorithm is simply some functionality that is run by the CPU to achieve some purpose. A Data structure is a collection of associated data, organized in some particular way. We use what is called 'Big O Notation' to describe the performance of an algorithm. ",
+    "text":[
+        {"title":"Big O Notation",
+            "text":[
+                {"content":"We use big O notation to measure 2 properties of an algorithm: space complexity and time complexity. Space complexity refers to the amount of memory which must be allocated in order to complete the algorithm. Time complexity refers to the number of operations which must be carried out to complete the algorithm. Both of these are not described exactly; what is important is the relationship between input size and time/space, not the actual time or memory usage."},
+                {"content":"Let's start by understanding time complexity. Say we have an algorithm which takes an array as an input. Now let's say that the algorithm will print all the items of the array in order. You can probably already tell that the number of operations executed by the CPU will depend directly on the size of the array. If we assume the array will have some arbitrary size 'n', we can write the number of operations as a function of n."},
+                {"content":"We would describe this algorithm's time complexity as O(n) (pronounced 'o of n'), because the number of operations is directly proportional to n. This is known as linear time, because the number of operations increases linearly as the size of n increases. "},
+                {"content":"Now let's say it takes 1 operation to print an item. In this case the number of operations would be 1 times n (O(n)). Now let's say instead that it takes 2 operations to print an element, the number of operations would be 2 times n (O(2n)). In both cases we would write the time complexity as O(n), because the number of distinct operations is not really relevant at scale since each operation only takes a fraction of a fraction of a second; what's more important is that the time it takes to complete the algorithm is directly proportional to the size of the input. Even if the algorithm printed each item twice, three times, or a hundred times, it would still be linear time, O(n). To summarize this point: It's not very important or useful to understand in exact detail the number of operations it takes for an algorithm to run, it's more useful to understand how the number of operations changes in proportion to a change in input size. So instead of describing the performance of the algorithm as a function which actually calculates the number of operations for a given input size, we simply describe the relationship between input size and operations with an ambiguous function."},
+                {"content":"Space complexity works much the same way. In the algorithm discussed, the algorithm considers the inputs one at a time, so it only needs one unit of memory to complete. We would call this algorithm constant in space, denoted O(1), because it needs a constant amount of memory. In other words, it doesn't matter how big the input is, the amount of memory the algorithm needs will never change. "},
+                {"content":"Again, the fact that a particular algorithm might need 1, 2, or 100 units of memory to complete is irrelevant to the space complexity. Two different algorithms that need 1 and 100 units of memory to complete are both constant in space (O(1)) because the memory usage is independent of the input size. "},
+                {"content":"An Important question here is how we describe complexity under different circumstances. Say we write an algorithm that takes a sorted array of integers, and iterates over the array from start to finish until it finds the first instance of the number 5, and returns its index (for this thought experiment we can assume that there will always be at least one 5 in the array). In one scenario, the number 5 may be in the very beginning of the array. In another, it may be at the very end. In the first scenario, the time it takes for the algorithm to complete is independent of the size of the array, because it simply confirms that the first element is 5, and returns its index; it completes in constant time. In the second scenario, the algorithm has to loop over the entire array to find the 5; it completes in linear time. So what is the time complexity of the algorithm, constant or linear time? The answer is linear time. We judge an algorithm by its performance in the worst case scenario, because we cannot necessarily predict the input beforehand. If we judged the example algorithm by its performance in the best case scenario, we might mistakenly think that it is a more suitable algorithm than another, better one. "}
+            ]
+        }
+    ]
+
+}
+
 ]

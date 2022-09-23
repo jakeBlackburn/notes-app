@@ -29,7 +29,7 @@ export default {
 .code-snippet {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
-    padding: 5px;
+    position: relative;
 }
 
 pre, code {
@@ -45,6 +45,9 @@ pre, code {
     text-align: right;
     margin-right: 35px;
     font-size: 0.6rem;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 

@@ -21,6 +21,7 @@ export default defineComponent({
 
 <style>
 body, html {
-  margin: 0
+  margin: 0;
+  background-color: crimson;
 }
 </style>

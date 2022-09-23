@@ -1,8 +1,10 @@
 <template>
     <div class="notes-dashboard">
         <img class="toggle-arrow" :src="toggled ? require('../assets/right-arrow.png') : require('../assets/left-arrow.png')" @click="toggleNav()">
-        <div class="notes-nav" :style="{ display: toggled ? 'none' : 'block', position: toggled ? 'absolute' : 'static' }">
-            <h3 class="note" v-for="title in notes" :key="title" @click="this.getNote(title.toLowerCase())">{{title.replace(/-/g, " ")}}</h3>
+        <div class="notes-nav" :style="{ display: toggled ? 'none' : 'block'}">
+            <div class="notes-list">
+                <h3 class="note" v-for="title in notes" :key="title" @click="this.getNote(title.toLowerCase())">{{title.replace(/-/g, " ")}}</h3>
+            </div>
         </div>
         <Note :note="note" :isLoading="isLoading" />
     </div>
@@ -23,7 +25,7 @@ export default {
             isLoading: true,
             note: {},
             toggled: false,
-            notes: ['About-Notes','Web-Development', 'Frontend', 'Backend', 'Javascript', 'HTML', 'CSS', 'React', 'Angular', 'Vue.js', 'Express']
+            notes: ['About-Notes', 'Web-Development', 'Javascript', 'HTML', 'CSS', 'React', 'Vue.js', 'SQL',  'Basics of Programming', 'Data-Structures-and-Algorithms']
         }
     },
     methods: {
@@ -54,6 +56,7 @@ export default {
     border-bottom: 1px solid darkorchid;
     margin-top: 80px;
     border-top: 1px solid black;
+    position: relative;
 }
 
 .notes-nav {
@@ -61,7 +64,12 @@ export default {
     background-color: rgba(105, 90, 205, 0.2);
     color: black;
     border-right: 1px solid black;
-    padding-left: 45px;
+    padding: 0 20px 0 45px;
+}
+
+.notes-list {
+    position: sticky;
+    top: 15px;
 }
 
 .note:hover {

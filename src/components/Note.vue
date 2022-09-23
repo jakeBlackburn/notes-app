@@ -51,7 +51,7 @@ export default {
     display: flex;
     position: relative;
     flex-direction: column;
-    color: slateblue;
+    color: rgba(80, 10, 10);
     background-color:aliceblue;
     padding: 0 5% 100px 5%;
 }
@@ -61,8 +61,8 @@ export default {
     text-align: center;
     font-size: 3.3rem;
     margin: 20px 0;
-    color: slateblue;
-    text-shadow: 1px 1px hotpink;
+    color: darkorchid;
+    text-shadow: 1px 2px black;
 }
 
 .text-title {
@@ -72,7 +72,7 @@ export default {
 }
 
 .overview {
-    color: hotpink;
+    color: deeppink;
     text-align: center;
     font-size: 1.2rem;
 }
