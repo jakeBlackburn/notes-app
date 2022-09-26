@@ -25,7 +25,7 @@ export default {
             isLoading: true,
             note: {},
             toggled: false,
-            notes: ['About-Notes', 'Web-Development', 'Javascript', 'HTML', 'CSS', 'React', 'Vue.js', 'SQL',  'Basics of Programming', 'Data-Structures-and-Algorithms']
+            notes: ['About-Notes', 'Web-Development', 'Javascript', 'HTML', 'CSS', 'React', 'Vue.js', 'SQL', 'Data-Structures-and-Algorithms']
         }
     },
     methods: {
