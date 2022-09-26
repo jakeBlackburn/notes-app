@@ -53,7 +53,7 @@ export default {
     flex-direction: column;
     color: rgba(80, 10, 10);
     background-color:aliceblue;
-    padding: 0 5% 100px 5%;
+    padding: 0 20px 100px 20px;
 }
 
 .title {
