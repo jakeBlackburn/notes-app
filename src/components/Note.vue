@@ -1,7 +1,7 @@
 <template>
 <div class="note-container">
     <h2 class="title">{{isLoading ? 'Loading...' : this.note.title.replace(/-/g, " ")}}</h2>
-    <div class="version">{{isLoading ? '' : this.note.version}}</div>
+    <div class="version">[{{isLoading ? '' : this.note.version}}]</div>
     <section class="overview">{{isLoading ? '' : this.note.overview}}</section>
     <div class="text" v-for="paragraph in note.text" :key="paragraph.id">
         <h4 class="text-title">{{isLoading ? '' : paragraph.title}}</h4>
@@ -53,36 +53,40 @@ export default {
     flex-direction: column;
     color: rgba(80, 10, 10);
     background-color:aliceblue;
-    padding: 0 20px 100px 20px;
+    padding: 0 15px 100px 35px;
 }
 
 .title {
-    font-family: Teko;
+    font-family: teko;
     text-align: center;
     font-size: 3.3rem;
     margin: 20px 0;
-    color: darkorchid;
-    text-shadow: 1px 2px black;
+    color: black;
+    text-shadow: 1px 1px deeppink;
+    text-transform: capitalize;
 }
 
 .text-title {
+    font-family: monospace;
     margin-left: 5%;
-    color: darkorchid;
-    font-size: 1.35rem;
+    color: black;
+    font-size: 1.4rem;
 }
 
 .overview {
     color: deeppink;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    line-height: 30px;
+    margin: 10px 5% 0 5%;
 }
 
 .version {
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 1.5rem;
-    color: darkorchid
+    font-size: 1rem;
+    color: black
 }
 
 .text {

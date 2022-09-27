@@ -10,7 +10,6 @@
 .header-container {
     width: 100%;
     height: 80px;
-    background-color: crimson;
     display: flex;
     align-items: center;
     position: fixed;
@@ -23,6 +22,8 @@ h1 {
     width: 100%;
     text-align: center;
     color: black;
-    text-shadow: 1px 1px white;
+    text-shadow: 1px 1px whitesmoke;
+    font-family: monospace;
+    font-size: 2.3rem;
 }
 </style>

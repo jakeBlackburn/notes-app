@@ -57,12 +57,13 @@ export default {
     margin-top: 80px;
     border-top: 1px solid black;
     position: relative;
+    box-shadow: 10px -4px 50px #6f838f;
 }
 
 .notes-nav {
     min-width: 18%;
     background-color: rgba(105, 90, 205, 0.2);
-    color: black;
+    color: rgba(0, 0, 0, 0.8);
     border-right: 1px solid black;
     padding: 0 20px 0 45px;
 }
