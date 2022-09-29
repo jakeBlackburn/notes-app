@@ -96,4 +96,50 @@ export default {
 }
 
 
+@media screen and (max-width: 900px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .overview {
+        font-size: 1rem;
+    }
+
+    .text-title {
+        font-size: 1.1rem;
+    }
+
+    .text {
+        font-size: 0.9rem;
+    }
+}
+
+
+@media screen and (max-width: 550px) {
+    .note-container {
+        padding: 50px 5% 0 5%;
+        width: 90%;
+    }
+
+    .overview {
+        line-height: 18px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .overview {
+        font-size: 0.9rem;
+    }
+
+    .text-title {
+        font-size: 1rem;
+    }
+
+    .text {
+        font-size: 0.8rem;
+    }
+}
+
 </style>

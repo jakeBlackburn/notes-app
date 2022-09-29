@@ -306,15 +306,15 @@
                 {"content":"Notice in the above example that the display is set to block. This is because not setting the display to block can often result in an awkward margin below the image. The final section will cover the display property in depth.","order":19}
             ],
             "code":[
-                {"caption":"lang: CSS","content":"\np {\n\tcolor: red; /* sets text color to red */\n\tbackground-color: aliceblue; /* sets background color to aliceblue */\n}\n\n/* or */\n\np {\n\tcolor: rgb(230, 200, 105); /* sets text color to specified rgb value */\n\tbackground-color: rgba(0, 255, 255, 0.5); /* sets background color to specified rgba value */\n}","order":2},
-                {"caption":"lang: CSS","content":"\np {\n\tfont-size: large; /* makes text large */\n\tfont-weight: bolder; /* makes text bold */\n\tfont-family: monospace; /* sets the font of text */\n} ","order":4},
-                {"caption":"lang: CSS","content":"\np {\n\ttext-align: center; /* aligns text to center */\n\ttext-decoration: underline; /* underlines text */\n\ttext-shadow: 1px 1px white; /* adds white text shadow 1px to the right and 1px below the original text */\n}","order":6},
+                {"caption":"lang: CSS","content":"\np {\n\tcolor: red; \n/* sets text color to red */\n\tbackground-color: aliceblue; \n/* sets background color to aliceblue */\n}\n\n/* or */\n\np {\n\tcolor: rgb(230, 200, 105); /* sets text color to specified rgb value */\n\tbackground-color: rgba(0, 255, 255, 0.5); /* sets background color to specified rgba value */\n}","order":2},
+                {"caption":"lang: CSS","content":"\np {\n\tfont-size: large; \n/* makes text large */\n\tfont-weight: bolder; \n/* makes text bold */\n\tfont-family: monospace; /* sets the font of text */\n} ","order":4},
+                {"caption":"lang: CSS","content":"\np {\n\ttext-align: center; \n/* aligns text to center */\n\ttext-decoration: underline; /* underlines text */\n\ttext-shadow: 1px 1px white; /* adds white text shadow 1px to the right and 1px below the original text */\n}","order":6},
                 {"caption":"lang: CSS","content":"\ndiv { /* shorthand */\n\tborder: 5px solid black;\n}","order":8},
-                {"caption":"lang: CSS","content":"\ndiv {\n\tborder-color: aqua; /* colors border aqua */\n\tborder-style: dashed; /* border is dashed */\n\tborder-width: 10px 0 10px 5px; /* 10px on the top and bottom, 0px on the right, 5px on the left */\n}","order":10},
-                {"caption":"lang: CSS","content":"\ndiv {\n\tborder: 2px double dodgerblue;\n\tborder-radius: 5px; /* rounded corners */}\n\ndiv {\n\tborder: 2px double dodgerblue;\n\tborder-radius: 100%; /* circular border */\n}","order":12},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tborder-color: aqua; \n/* colors border aqua */\n\tborder-style: dashed; /* border is dashed */\n\tborder-width: 10px 0 10px 5px; \n/* 10px on the top and bottom, 0px on the right, 5px on the left */\n}","order":10},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tborder: 2px double dodgerblue;\n\tborder-radius: 5px; \n/* rounded corners */}\n\ndiv {\n\tborder: 2px double dodgerblue;\n\tborder-radius: 100%; \n/* circular border */\n}","order":12},
                 {"caption":"lang: CSS","content":"\ndiv {\n\tbackground-image: url('image_url');\n}","order":14},
-                {"caption":"lang: CSS","content":"\ndiv {\n\tbackground-image: url('image_url');\n\tbackground-position: center; /* image will appear in the center of the container */\n\tbackground-size: cover; /* resizes image to cover the entire container without changing tha aspect ratio */\n\tbackground-repeat: no-repeat; /* image will not repeat */\n}","order":16},
-                {"caption":"lang: CSS","content":"\nimg {\n\tobject-fit: contain; /* fits image to be fully within by the container without changing aspect ratio*/\n\tdisplay: block;\n}","order":18}
+                {"caption":"lang: CSS","content":"\ndiv {\n\tbackground-image: url('image_url');\n\tbackground-position: center; \n/* image will appear in the center of the container */\n\tbackground-size: cover; \n/* resizes image to cover the entire container without changing tha aspect ratio */\n\tbackground-repeat: no-repeat; \n/* image will not repeat */\n}","order":16},
+                {"caption":"lang: CSS","content":"\nimg {\n\tobject-fit: contain; \n/* fits image to be fully within by the container without changing aspect ratio*/\n\tdisplay: block;\n}","order":18}
             ]
 
         },
