@@ -63,7 +63,7 @@
             "code":[
                 {"caption":"lang: javascript","content":"\nfor (let i = value, condition, iteration) {\n\t//do something\n}","order":2},
                 {"caption":"lang: javascript","content":"\nfor (let i = 0; i < 10; i++) {\n\tconsole.log(i)\n} // logs numbers 0-9","order":4},
-                {"caption":"lang: javascript","content":"\nvar j = 0\ndo {\n\tj++;\n\tconsole.log(j)\n\t} while (j < 10) // logs all numbers 1-10","order":7}
+                {"caption":"lang: javascript","content":"\nvar j = 0\ndo {\n\tj++;\n\tconsole.log(j)\n} while (j < 10) // logs all numbers 1-10","order":7}
             ]
         },
 
@@ -73,8 +73,8 @@
                 {"content":"Functions in javascript use the 'return' keyword to return something or simply to stop the function if nothing is returned.","order":3},
                 {"content":"In the first function the variable is returned, in the second nothing gets returned and the function simply stops, and in the third example the function returns an object containing two variables ","order":5}            ],
             "code":[
-                {"caption":"lang: javascript","content":"\nconst function1 = function(arg1, arg2) {\n\t//function body\n\treturn 'function 1'\n}\nconst function2 = (arg1, arg2) => {\n\t//function body\n\treturn 'function 2'\n}\n//uses implicit return, no 'return' keyword needed\nconst function3 = (arg1, arg2) => 'function 3'\nfunction function4(arg1, arg2) {\n\t//function body\n\treturn 'function 4'\n}","order":2},
-                {"caption":"lang: javascript","content":"\nconst function1() {\n\tconst variable = 'example string'\n\t//do something\n\treturn variable\n}\n\nconst function2() {\n\t//do something\n\treturn\n}\n\nconst function3() {\n\tconst variable1 = 'example string 1'\n\tconst variable2 = 'example string 2'\n\t//do something\n\treturn {\n            var1: variable1, \n            var2: variable2\t\n        } \n}","order":4}
+                {"caption":"lang: javascript","content":"\nconst function1 = function(arg1, arg2) {\n\t//function body\n\treturn 'function 1'\n}\n\nconst function2 = (arg1, arg2) => {\n\t//function body\n\treturn 'function 2'\n}\n\nfunction function3(arg1, arg2) {\n\t//function body\n\treturn 'function 3'\n}","order":2},
+                {"caption":"lang: javascript","content":"\nconst function1() {\n\tconst variable = 'example string'\n\t//do something\n\treturn variable\n}\n\nconst function2() {\n\t//do something\n\treturn\n}\n\nconst function3() {\n\tconst variable1 = 'example string 1'\n\tconst variable2 = 'example string 2'\n\t//do something\n\treturn {\n\t\tvar1: variable1,\n\t\tvar2: variable2\n\t} \n}","order":4}
             ]
         },
                 
@@ -110,9 +110,9 @@
             ],
             "code":[
                 {"caption":"lang: javascript","content":"\nconst element = document.getElementById('ID')","order":5},
-                {"caption":"lang: javascript","content":"\nconst class_elements = document.getElementsByClassName('class') //gets all elements of class 'class'\nconst paragraphs = document.getElementsByTagName('p') //gets all <p> elements \nconst elements_by_selector = document.querySelectorAll('p.class') //gets all <p> elements of class 'class'","order":7},
+                {"caption":"lang: javascript","content":"\nconst class_elements = document.getElementsByClassName('class') \n//gets all elements of class 'class'\n\nconst paragraphs = document.getElementsByTagName('p') \n//gets all <p> elements \n\nconst elements_by_selector = document.querySelectorAll('p.class') \n//gets all <p> elements of class 'class'","order":7},
                 {"caption":"lang: javascript","content":"\nconst x = document.getElementById('x')\nconst y = x.getElementsByClassName('content')", "order":9},
-                {"caption":"lang: javascript","content":"\nelement.InnerHTML = 'new content' // changes content of element to 'new content'\nelement.classList.add('new-class')  // adds class 'new-class' to element\nelement.style.color =  'red'; // changes the color of the element to 'red'", "order":12}
+                {"caption":"lang: javascript","content":"\nelement.InnerHTML = 'new content' \n// changes content of element to 'new content'\n\nelement.classList.add('new-class')  \n// adds class 'new-class' to element\n\nelement.style.color =  'red'; \n// changes the color of the element to 'red'", "order":12}
             ]
         },
 
@@ -272,7 +272,7 @@
             ],
             "code":[
                 {"caption":"lang: CSS","content":"\nselector {\n\tproperty: value;\n\tother-property: value;\n}","order":2},
-                {"caption":"lang: CSS","content":"\n/* by element name */\nh1 {\n\tproperty: value;\n}\n\n/* by class */\n.class {\n\tproperty: value;\n}\n\n/* by id */\n#id {\n\tproperty: value;\n}\n\n/* by element-specific class */\np.class {\n\tproperty: value;\n}\n\n/* by descendant selector\napplied to p tags within div */\n\ndiv p {\n\tproperty: value;\n}\n\n/* by child selector\nonly applied to direct children of a certain element */\ndiv > p {\n\tproperty: value;\n}\n\n/* by adjacent selector\napplied to element of a certain tag which come directly after an element */\nh1 + p {\n\tproperty: value;\n}\n\n/* by general sibling selector\napplied to all sibling elements of a certain tag after an element */\nh1 ~ p {\n\tproperty: value;\n}\n\n/* by multiple selectors */\nh1, #id, .class, div > p {\n\tproperty: value;\n}","order":4}
+                {"caption":"lang: CSS","content":"\n/* by element name */\nh1 {\n\tproperty: value;\n}\n\n/* by class */\n.class {\n\tproperty: value;\n}\n\n/* by id */\n#id {\n\tproperty: value;\n}\n\n/* by element-specific class */\np.class {\n\tproperty: value;\n}\n\n/* by descendant selector\napplied to p tags within div */\ndiv p {\n\tproperty: value;\n}\n\n/* by child selector\nonly applied to direct children of a certain element */\ndiv > p {\n\tproperty: value;\n}\n\n/* by adjacent selector\napplied to element of a certain tag which come directly after an element */\nh1 + p {\n\tproperty: value;\n}\n\n/* by general sibling selector\napplied to all sibling elements of a certain tag after an element */\nh1 ~ p {\n\tproperty: value;\n}\n\n/* by multiple selectors */\nh1, #id, .class, div > p {\n\tproperty: value;\n}","order":4}
             ]
         },
 
@@ -306,15 +306,15 @@
                 {"content":"Notice in the above example that the display is set to block. This is because not setting the display to block can often result in an awkward margin below the image. The final section will cover the display property in depth.","order":19}
             ],
             "code":[
-                {"caption":"lang: CSS","content":"\np {\n\tcolor: red; \n/* sets text color to red */\n\tbackground-color: aliceblue; \n/* sets background color to aliceblue */\n}\n\n/* or */\n\np {\n\tcolor: rgb(230, 200, 105); /* sets text color to specified rgb value */\n\tbackground-color: rgba(0, 255, 255, 0.5); /* sets background color to specified rgba value */\n}","order":2},
-                {"caption":"lang: CSS","content":"\np {\n\tfont-size: large; \n/* makes text large */\n\tfont-weight: bolder; \n/* makes text bold */\n\tfont-family: monospace; /* sets the font of text */\n} ","order":4},
-                {"caption":"lang: CSS","content":"\np {\n\ttext-align: center; \n/* aligns text to center */\n\ttext-decoration: underline; /* underlines text */\n\ttext-shadow: 1px 1px white; /* adds white text shadow 1px to the right and 1px below the original text */\n}","order":6},
-                {"caption":"lang: CSS","content":"\ndiv { /* shorthand */\n\tborder: 5px solid black;\n}","order":8},
-                {"caption":"lang: CSS","content":"\ndiv {\n\tborder-color: aqua; \n/* colors border aqua */\n\tborder-style: dashed; /* border is dashed */\n\tborder-width: 10px 0 10px 5px; \n/* 10px on the top and bottom, 0px on the right, 5px on the left */\n}","order":10},
-                {"caption":"lang: CSS","content":"\ndiv {\n\tborder: 2px double dodgerblue;\n\tborder-radius: 5px; \n/* rounded corners */}\n\ndiv {\n\tborder: 2px double dodgerblue;\n\tborder-radius: 100%; \n/* circular border */\n}","order":12},
+                {"caption":"lang: CSS","content":"\np {\n\tcolor: red; \n\tbackground-color: aliceblue; \n}\n/* sets text color to red */\n/* sets background color to aliceblue */\n\n/* or */\n\np {\n\tcolor: rgb(230, 200, 105); \n\tbackground-color: rgba(0, 255, 255, 0.5);\n}\n/* sets text color to specified rgb value */\n/* sets background color to specified rgba value */","order":2},
+                {"caption":"lang: CSS","content":"\np {\n\tfont-size: large; \n\tfont-weight: bolder; \n\tfont-family: monospace; \n}\n/* makes text large */\n/* makes text bold */ \n/* sets the font of text to monospace */","order":4},
+                {"caption":"lang: CSS","content":"\np {\n\ttext-align: center;\n\ttext-decoration: underline; \n\ttext-shadow: 1px 1px white; \n} \n/* aligns text to center */\n/* underlines text */\n/* adds white text shadow 1px to the right and 1px below the original text */","order":6},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tborder: 5px solid black;\n}","order":8},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tborder-color: aqua; \n\tborder-style: dashed; \n\tborder-width: 10px 0 10px 5px; \n}\n/* colors border aqua */\n/* border is dashed */\n/* 10px on the top and bottom, 0px on the right, 5px on the left */","order":10},
+                {"caption":"lang: CSS","content":"\ndiv {\n\tborder: 2px double dodgerblue;\n\tborder-radius: 5px; \n}\n/* rounded corners */\n\ndiv {\n\tborder: 2px double dodgerblue;\n\tborder-radius: 100%; \n}\n/* circular border */","order":12},
                 {"caption":"lang: CSS","content":"\ndiv {\n\tbackground-image: url('image_url');\n}","order":14},
-                {"caption":"lang: CSS","content":"\ndiv {\n\tbackground-image: url('image_url');\n\tbackground-position: center; \n/* image will appear in the center of the container */\n\tbackground-size: cover; \n/* resizes image to cover the entire container without changing tha aspect ratio */\n\tbackground-repeat: no-repeat; \n/* image will not repeat */\n}","order":16},
-                {"caption":"lang: CSS","content":"\nimg {\n\tobject-fit: contain; \n/* fits image to be fully within by the container without changing aspect ratio*/\n\tdisplay: block;\n}","order":18}
+                {"caption":"lang: CSS","content":"\ndiv {\n\tbackground-image: url('image_url');\n\tbackground-position: center;\n\tbackground-size: cover; \n\tbackground-repeat: no-repeat; \n} \n/* image will appear in the center of the container */\n/* resizes image to cover the entire container without changing tha aspect ratio */\n/* image will not repeat */\n/* no-repeat is technically redundant because image will cover the container anyway */","order":16},
+                {"caption":"lang: CSS","content":"\nimg {\n\tobject-fit: contain; \n\tdisplay: block;\n}\n/* fits image to be fully within by the container without changing aspect ratio */","order":18}
             ]
 
         },
@@ -502,7 +502,7 @@
             "code":[
                 {"caption":"lang: Vue/JS","content":"\n<template>\n\t<a v-bind:href='this.link'></a>\n</template>","order":3},
                 {"caption":"lang: Vue/JS","content":"\n<template>\n\t<a :href='this.link'></a>\n</template>","order":5},
-                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<a v-bind='this.attr_object'></a>\n</template>\n\n<script>\nexport default {\n\tdata() {\n\t\treturn {\n\t\t\tattr_object: {\n\t\t\t\tclass: 'class',\n\t\t\t\thref: 'https://google.com'\n\t\t}\n\t\t}\n\t}\n}\n</script>","order":7},
+                {"caption":"lang: Vue/JS","content":"\n<template>\n\t<a v-bind='this.attr_object'></a>\n</template>\n\n<script>\nexport default {\n\tdata() {\n\t\treturn {\n\t\t\tattr_object: {\n\t\t\t\tclass: 'class',\n\t\t\t\thref: 'https://google.com'\n\t\t\t}\n\t\t}\n\t}\n}\n</script>","order":7},
                 {"caption":"lang: Vue/JS","content":"\n<template>\n\t<div v-html='this.html_string'></div>\n</template>","order":9},
                 {"caption":"lang: Vue/JS","content":"\n<template>\n\t<div v-if='this.bool'>conditionally rendered div</div>\n</template>","order":11},
                 {"caption":"lang: Vue/JS","content":"\nnames: [\n\t'john',\n\t'alice',\n\t'bob',\n\t'charlie'\n]","order":14},

@@ -54,7 +54,7 @@ export default {
 .notes-dashboard {
     background-color: white;
     display: flex;
-    border-bottom: 1px solid darkorchid;
+    border-bottom: 1px solid black;
     margin-top: 80px;
     border-top: 1px solid black;
     position: relative;

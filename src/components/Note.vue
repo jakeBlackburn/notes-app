@@ -121,6 +121,11 @@ export default {
         width: 90%;
     }
 
+    .version {
+        top: 70px;
+        right: 75px;
+    }
+
     .overview {
         line-height: 18px;
     }
