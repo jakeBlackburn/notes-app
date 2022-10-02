@@ -2,8 +2,8 @@
     <div class="notes-dashboard">
         <img class="toggle-arrow horizontal" :src="toggled ? require('../assets/right-arrow.png') : require('../assets/left-arrow.png')" @click="toggleNav()">
         <img class="toggle-arrow vertical" :src="toggled ? require('../assets/down-arrow.png') : require('../assets/up-arrow.png')" @click="toggleNav()">
-        <div class="notes-nav" :style="{ display: toggled ? 'none' : 'block'}">
-            <div class="notes-list">
+        <div class="notes-nav" :class="navClass"  :style="{ display: toggled ? 'none' : 'block'}">
+            <div class="notes-list" :class="listClass" >
                 <h3 class="note" v-for="title in notes" :key="title" @click="this.getNote(title.toLowerCase())">{{title.replace(/-/g, " ")}}</h3>
             </div>
         </div>
@@ -26,6 +26,8 @@ export default {
             isLoading: true,
             note: {},
             toggled: false,
+            navClass: undefined,
+            listClass: undefined,
             notes: ['About-Notes', 'Web-Development', 'Javascript', 'HTML', 'CSS', 'React', 'Vue.js', 'SQL', 'Data-Structures-and-Algorithms']
         }
     },
@@ -41,7 +43,17 @@ export default {
             }
         },
         toggleNav() {
-            this.toggled = !this.toggled
+            if (this.toggled == false) {
+                this.listClass = 'fading'
+                this.navClass = 'exiting'
+                setTimeout(() => {
+                    this.toggled = !this.toggled
+                }, 1000)
+            } else {
+                this.navClass = undefined
+                this.listClass = undefined
+                this.toggled = !this.toggled
+            }
         }
     },
     created() {
@@ -62,18 +74,28 @@ export default {
 }
 
 .notes-nav {
-    min-width: 18%;
+    width: 22%;
     background-color: rgba(215, 215, 245);
     color: rgba(0, 0, 0, 0.8);
     border-right: 1px solid black;
     padding: 0 20px 0 45px;
+    animation: enter 1s ease-in-out;
 }
 
+.exiting {
+    animation: exit 1s ease-in-out;
+}
+
+
 .notes-list {
+    animation: fade-in 1.5s;
     position: sticky;
     top: 15px;
 }
 
+.fading {
+    animation: fade-out 350ms forwards;
+}
 .note:hover {
     cursor: pointer;
     color:slateblue;
@@ -107,6 +129,59 @@ export default {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    66% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes enter {
+    0% {
+        width: 0;
+        padding: 0;
+    }
+
+}
+
+@keyframes exit {
+    100% {
+        width: 0;
+        padding: 0;
+    }
+}
+
+
+@keyframes vert_enter {
+    0% {
+        height: 0;
+    }
+
+}
+
+@keyframes vert_exit {
+    100% {
+        height: 0;
+    }
+}
+
 @media screen and (max-width: 1000px) {
     .notes-nav {
         font-size: 0.8rem;
@@ -127,8 +202,14 @@ export default {
         position: fixed;
         top: 51px;
         z-index: 1;
-        height: auto;
-        padding: 0 45px;
+        height: 165px;
+        width: 100%;
+        padding: 0;
+        animation: vert_enter 1s ease-in-out;
+    }
+
+    .exiting {
+        animation: vert_exit 1s ease-in-out;
     }
 
     .notes-list {
